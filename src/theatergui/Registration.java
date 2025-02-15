@@ -49,7 +49,7 @@ public class Registration extends javax.swing.JFrame {
         Fname = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         PhoneNum = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        type = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,8 +186,8 @@ public class Registration extends javax.swing.JFrame {
         });
         New_Manager.add(PhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 440, 330, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee", "Manager" }));
-        New_Manager.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, 330, 30));
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee", "Manager" }));
+        New_Manager.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, 330, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -230,37 +230,41 @@ public class Registration extends javax.swing.JFrame {
 
     private void ConfirmNMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmNMActionPerformed
     dbConnect dbc = new dbConnect();
-    String password = new String(MR_password.getPassword()).trim();
-    String Cpassword = new String(MR_passwordConfirm.getPassword()).trim();
-    String phone = PhoneNum.getText().trim();
-    String username = MR_username.getText().trim();
-    String ln = Lname.getText().trim();
     String fn = Fname.getText().trim();
+    String ln = Lname.getText().trim();
+    String uname = MR_username.getText().trim();
+    String pass = new String(MR_password.getPassword()).trim();
+    String Cpass = new String(MR_passwordConfirm.getPassword()).trim();
+    String p = PhoneNum.getText().trim();
+    String at = type.getSelectedItem().toString().trim();
     
 
 
 
-        if(username.isEmpty() || password.isEmpty() || Cpassword.isEmpty() || ln.isEmpty() || fn.isEmpty())
+        if(uname.isEmpty() || pass.isEmpty() || Cpass.isEmpty() || ln.isEmpty() || fn.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Please Fill All Boxes");
 
-        }else if(!password.equals(Cpassword))
+        }else if(!pass.equals(Cpass))
         {
             JOptionPane.showMessageDialog(null, "Password Does Not Match");
-//            System.out.println("Password ["+password+"] Length: "+password.length());
-//            System.out.println("Confirm Password ["+Cpassword+"] Length: "+Cpassword.length());
-
-        }else if(!phone.matches("\\d+"))
+            //System.out.println("Password ["+password+"] Length: "+password.length());
+            //System.out.println("Confirm Password ["+Cpassword+"] Length: "+Cpassword.length());
+        }else if(!p.matches("\\d+"))
         {
             JOptionPane.showMessageDialog(null, "Phone Must Only Contain Numbers");
-        }else if(password.length() != 8)
+        }else if(pass.length() <= 7)
         {
             JOptionPane.showMessageDialog(null, "Password Must be Exactly 8 Characters Long");
-        }else if(phone.length() > 15 || phone.length() < 11)
+        }else if(p.length() > 15 || p.length() < 11)
         {
             JOptionPane.showMessageDialog(null, "Invalid Phone num");
+        }else if (dbc.insertData("INSERT INTO tbl_accounts (u_fname, u_lname, u_username, u_type, u_password, u_phone, u_status) "
+        + "VALUES ('" + fn + "', '" + ln + "', '" + uname + "', '"+at+"','" + pass + "', '" + p + "', 'Pending')") == 0) 
+        {
+            JOptionPane.showMessageDialog(null, "Registered succesfully!");
+            
         }
-
     }//GEN-LAST:event_ConfirmNMActionPerformed
 
     private void LnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LnameActionPerformed
@@ -337,7 +341,6 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JPanel Navigation;
     private javax.swing.JPanel New_Manager;
     private javax.swing.JTextField PhoneNum;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -346,5 +349,6 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> type;
     // End of variables declaration//GEN-END:variables
 }

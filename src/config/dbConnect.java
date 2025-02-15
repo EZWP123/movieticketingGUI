@@ -4,7 +4,9 @@ package config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class dbConnect 
 {
@@ -51,5 +53,18 @@ public class dbConnect
             result =0;
         }
         return result;
-    }       
+    }
+    
+    
+    
+    
+    
+    
+    
+    //Function to retrieve data
+        public ResultSet getData(String sql) throws SQLException{
+            Statement stmt = connect.createStatement();
+            ResultSet rst = stmt.executeQuery(sql);
+            return rst;
+        }
 }

@@ -5,6 +5,8 @@
  */
 package theatergui;
 
+import admin.AdminDashboard;
+import admin.U_Admin;
 import java.awt.Color;
 
 /**
@@ -42,6 +44,7 @@ public class StartupPanel extends javax.swing.JFrame {
         Navigation = new javax.swing.JPanel();
         ShowMovies = new javax.swing.JButton();
         ManagerStartup = new javax.swing.JButton();
+        ShowMovies1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,7 +79,7 @@ public class StartupPanel extends javax.swing.JFrame {
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
 
         ShowMovies.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ShowMovies.setText("Show Movies");
+        ShowMovies.setText("Testing");
         ShowMovies.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ShowMoviesMouseEntered(evt);
@@ -90,7 +93,7 @@ public class StartupPanel extends javax.swing.JFrame {
                 ShowMoviesActionPerformed(evt);
             }
         });
-        Main.add(ShowMovies, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 180, 230, 50));
+        Main.add(ShowMovies, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, 230, 50));
 
         ManagerStartup.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         ManagerStartup.setText("Login");
@@ -100,6 +103,23 @@ public class StartupPanel extends javax.swing.JFrame {
             }
         });
         Main.add(ManagerStartup, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 230, 50));
+
+        ShowMovies1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ShowMovies1.setText("Show Movies");
+        ShowMovies1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ShowMovies1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ShowMovies1MouseExited(evt);
+            }
+        });
+        ShowMovies1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowMovies1ActionPerformed(evt);
+            }
+        });
+        Main.add(ShowMovies1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 180, 230, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,8 +137,8 @@ public class StartupPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ShowMoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowMoviesActionPerformed
-        showMovies sm = new showMovies();
-        sm.setVisible(true);
+        AdminDashboard ad = new AdminDashboard();
+        ad.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ShowMoviesActionPerformed
 
@@ -135,6 +155,18 @@ public class StartupPanel extends javax.swing.JFrame {
     private void ShowMoviesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMoviesMouseExited
         ShowMovies.setBackground(Default1);
     }//GEN-LAST:event_ShowMoviesMouseExited
+
+    private void ShowMovies1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMovies1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowMovies1MouseEntered
+
+    private void ShowMovies1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMovies1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowMovies1MouseExited
+
+    private void ShowMovies1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowMovies1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowMovies1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +210,7 @@ public class StartupPanel extends javax.swing.JFrame {
     private javax.swing.JButton ManagerStartup;
     private javax.swing.JPanel Navigation;
     private javax.swing.JButton ShowMovies;
+    private javax.swing.JButton ShowMovies1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
