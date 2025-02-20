@@ -5,6 +5,7 @@
  */
 package admin;
 
+import java.awt.Color;
 import theatergui.StartupPanel;
 
 /**
@@ -13,9 +14,12 @@ import theatergui.StartupPanel;
  */
 public class AdminDashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminStartup
-     */
+    private Color H;
+    Color h = new Color(51,51,255);
+    private Color D;
+    Color d = new Color(240,240,240);
+    
+    
     public AdminDashboard() {
         initComponents();
     }
@@ -33,8 +37,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Navigation = new javax.swing.JPanel();
-        ManagerStartup1 = new javax.swing.JButton();
-        ManagerStartup2 = new javax.swing.JButton();
+        logout = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        users = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,23 +62,45 @@ public class AdminDashboard extends javax.swing.JFrame {
         Navigation.setBackground(new java.awt.Color(51, 51, 51));
         Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ManagerStartup1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ManagerStartup1.setText("Users");
-        ManagerStartup1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagerStartup1ActionPerformed(evt);
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
             }
         });
-        Navigation.add(ManagerStartup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 300, 50));
+        logout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ManagerStartup2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ManagerStartup2.setText("Back");
-        ManagerStartup2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagerStartup2ActionPerformed(evt);
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Logout");
+        logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
+
+        Navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 493, 130, 40));
+
+        users.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                usersMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                usersMouseExited(evt);
             }
         });
-        Navigation.add(ManagerStartup2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 130, 40));
+        users.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Users");
+        users.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 12, 300, -1));
+
+        Navigation.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 300, 50));
 
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 540));
 
@@ -91,17 +119,33 @@ public class AdminDashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ManagerStartup1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerStartup1ActionPerformed
-        U_Admin ua = new U_Admin();
-        ua.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ManagerStartup1ActionPerformed
-
-    private void ManagerStartup2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerStartup2ActionPerformed
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         StartupPanel sp = new StartupPanel();
         sp.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_ManagerStartup2ActionPerformed
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        logout.setBackground(h);
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        logout.setBackground(d);
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseClicked
+        U_Admin ua = new U_Admin();
+        ua.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_usersMouseClicked
+
+    private void usersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseEntered
+        users.setBackground(h);
+    }//GEN-LAST:event_usersMouseEntered
+
+    private void usersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseExited
+        users.setBackground(d);
+    }//GEN-LAST:event_usersMouseExited
 
     /**
      * @param args the command line arguments
@@ -172,9 +216,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Main;
-    private javax.swing.JButton ManagerStartup1;
-    private javax.swing.JButton ManagerStartup2;
     private javax.swing.JPanel Navigation;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JPanel logout;
+    private javax.swing.JPanel users;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package theatergui;
 
+import Processes.showMovies;
 import admin.AdminDashboard;
 import admin.U_Admin;
 import java.awt.Color;
@@ -15,14 +16,12 @@ import java.awt.Color;
  */
 public class StartupPanel extends javax.swing.JFrame {
 
-    private Color Hover;
-    Color hover = new Color(51,51,255);
-    private Color Default1;
-    Color Default = new Color(255,255,255);
+    private Color H;
+    Color h = new Color(51,51,255);
+    private Color D;
+    Color d = new Color(240,240,240);
 
-    /**
-     * Creates new form mainMenu
-     */
+    
     public StartupPanel() {
         initComponents();
         this.setResizable(false);
@@ -42,9 +41,16 @@ public class StartupPanel extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Navigation = new javax.swing.JPanel();
-        ShowMovies = new javax.swing.JButton();
-        ManagerStartup = new javax.swing.JButton();
-        ShowMovies1 = new javax.swing.JButton();
+        Main1 = new javax.swing.JPanel();
+        Header1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        Navigation1 = new javax.swing.JPanel();
+        ShowM = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        Test = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        Login = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,54 +84,114 @@ public class StartupPanel extends javax.swing.JFrame {
 
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
 
-        ShowMovies.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ShowMovies.setText("Testing");
-        ShowMovies.addMouseListener(new java.awt.event.MouseAdapter() {
+        Main1.setBackground(new java.awt.Color(39, 39, 39));
+        Main1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Header1.setBackground(new java.awt.Color(0, 0, 0));
+        Header1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setBackground(new java.awt.Color(0, 255, 0));
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Theater Ticketing System");
+        Header1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, 40));
+
+        Main1.add(Header1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
+
+        Navigation1.setBackground(new java.awt.Color(51, 51, 51));
+
+        javax.swing.GroupLayout Navigation1Layout = new javax.swing.GroupLayout(Navigation1);
+        Navigation1.setLayout(Navigation1Layout);
+        Navigation1Layout.setHorizontalGroup(
+            Navigation1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+        Navigation1Layout.setVerticalGroup(
+            Navigation1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+
+        Main1.add(Navigation1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
+
+        ShowM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ShowMMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ShowMoviesMouseEntered(evt);
+                ShowMMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ShowMoviesMouseExited(evt);
+                ShowMMouseExited(evt);
             }
         });
-        ShowMovies.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowMoviesActionPerformed(evt);
-            }
-        });
-        Main.add(ShowMovies, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, 230, 50));
+        ShowM.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ManagerStartup.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ManagerStartup.setText("Login");
-        ManagerStartup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagerStartupActionPerformed(evt);
-            }
-        });
-        Main.add(ManagerStartup, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 230, 50));
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Show Movies");
+        ShowM.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 15, 230, -1));
 
-        ShowMovies1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ShowMovies1.setText("Show Movies");
-        ShowMovies1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Main1.add(ShowM, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, 230, 50));
+
+        Test.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TestMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ShowMovies1MouseEntered(evt);
+                TestMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ShowMovies1MouseExited(evt);
+                TestMouseExited(evt);
             }
         });
-        ShowMovies1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowMovies1ActionPerformed(evt);
+        Test.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Testing");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
             }
         });
-        Main.add(ShowMovies1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 180, 230, 50));
+        Test.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 15, 220, -1));
+
+        Main1.add(Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, 230, 50));
+
+        Login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LoginMouseExited(evt);
+            }
+        });
+        Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Login");
+        Login.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 15, 220, -1));
+
+        Main1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 230, 50));
+
+        Main.add(Main1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, 1325, Short.MAX_VALUE)
+            .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,37 +202,61 @@ public class StartupPanel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ShowMoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowMoviesActionPerformed
+    private void ShowMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMMouseClicked
+        showMovies sm = new showMovies();
+        sm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ShowMMouseClicked
+
+    private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
+        Login l = new Login();
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_LoginMouseClicked
+
+    private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered
+        Login.setBackground(h);
+    }//GEN-LAST:event_LoginMouseEntered
+
+    private void LoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseExited
+        Login.setBackground(d);
+    }//GEN-LAST:event_LoginMouseExited
+
+    private void TestMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TestMouseExited
+        Test.setBackground(d);
+    }//GEN-LAST:event_TestMouseExited
+
+    private void TestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TestMouseEntered
+        Test.setBackground(h);
+    }//GEN-LAST:event_TestMouseEntered
+
+    private void TestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TestMouseClicked
         AdminDashboard ad = new AdminDashboard();
         ad.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ShowMoviesActionPerformed
+        this.dispose();    
+    }//GEN-LAST:event_TestMouseClicked
 
-    private void ManagerStartupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerStartupActionPerformed
-        Login ml = new Login();
-        ml.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ManagerStartupActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        AdminDashboard ad = new AdminDashboard();
+        ad.setVisible(true);
+        this.dispose();  
+    }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void ShowMoviesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMoviesMouseEntered
-        ShowMovies.setBackground(hover);
-    }//GEN-LAST:event_ShowMoviesMouseEntered
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        Test.setBackground(h);
+    }//GEN-LAST:event_jLabel2MouseEntered
 
-    private void ShowMoviesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMoviesMouseExited
-        ShowMovies.setBackground(Default1);
-    }//GEN-LAST:event_ShowMoviesMouseExited
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        Test.setBackground(d);
+    }//GEN-LAST:event_jLabel2MouseExited
 
-    private void ShowMovies1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMovies1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ShowMovies1MouseEntered
+    private void ShowMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMMouseEntered
+        ShowM.setBackground(h);
+    }//GEN-LAST:event_ShowMMouseEntered
 
-    private void ShowMovies1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMovies1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ShowMovies1MouseExited
-
-    private void ShowMovies1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowMovies1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ShowMovies1ActionPerformed
+    private void ShowMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMMouseExited
+        ShowM.setBackground(d);
+    }//GEN-LAST:event_ShowMMouseExited
 
     /**
      * @param args the command line arguments
@@ -206,11 +296,18 @@ public class StartupPanel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
+    private javax.swing.JPanel Header1;
+    private javax.swing.JPanel Login;
     private javax.swing.JPanel Main;
-    private javax.swing.JButton ManagerStartup;
+    private javax.swing.JPanel Main1;
     private javax.swing.JPanel Navigation;
-    private javax.swing.JButton ShowMovies;
-    private javax.swing.JButton ShowMovies1;
+    private javax.swing.JPanel Navigation1;
+    private javax.swing.JPanel ShowM;
+    private javax.swing.JPanel Test;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

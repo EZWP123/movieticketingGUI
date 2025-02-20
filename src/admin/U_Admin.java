@@ -6,20 +6,22 @@
 package admin;
 
 import config.dbConnect;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
 import theatergui.Login;
 
-/**
- *
- * @author DANIEL FAILADONA
- */
+
 public class U_Admin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminDashboard
-     */
+    private Color H;
+    Color h = new Color(51,51,255);
+    private Color D;
+    Color d = new Color(240,240,240);
+    
+    
+    
     public U_Admin() {
         initComponents();
         displayData();
@@ -48,12 +50,16 @@ public class U_Admin extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Navigation = new javax.swing.JPanel();
-        ManagerStartup2 = new javax.swing.JButton();
+        logout = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         account_table = new javax.swing.JTable();
-        ManagerStartup = new javax.swing.JButton();
-        ManagerStartup3 = new javax.swing.JButton();
-        ManagerStartup4 = new javax.swing.JButton();
+        delete = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        add = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        update = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,14 +81,25 @@ public class U_Admin extends javax.swing.JFrame {
         Navigation.setBackground(new java.awt.Color(51, 51, 51));
         Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ManagerStartup2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ManagerStartup2.setText("Back");
-        ManagerStartup2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagerStartup2ActionPerformed(evt);
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
             }
         });
-        Navigation.add(ManagerStartup2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 130, 40));
+        logout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Back");
+        logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
+
+        Navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 493, 130, 40));
 
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 540));
 
@@ -98,32 +115,65 @@ public class U_Admin extends javax.swing.JFrame {
 
         Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 1020, 430));
 
-        ManagerStartup.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ManagerStartup.setText("DELETE");
-        ManagerStartup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagerStartupActionPerformed(evt);
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteMouseExited(evt);
             }
         });
-        Main.add(ManagerStartup, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 130, 40));
+        delete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ManagerStartup3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ManagerStartup3.setText("UPDATE");
-        ManagerStartup3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagerStartup3ActionPerformed(evt);
-            }
-        });
-        Main.add(ManagerStartup3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 130, 40));
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("DELETE");
+        delete.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
 
-        ManagerStartup4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ManagerStartup4.setText("ADD");
-        ManagerStartup4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagerStartup4ActionPerformed(evt);
+        Main.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, 40));
+
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addMouseExited(evt);
             }
         });
-        Main.add(ManagerStartup4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 130, 40));
+        add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("ADD");
+        add.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
+
+        Main.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, 40));
+
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateMouseExited(evt);
+            }
+        });
+        update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("UPDATE");
+        update.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
+
+        Main.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,25 +190,55 @@ public class U_Admin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ManagerStartupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerStartupActionPerformed
-        Login ml = new Login();
-        ml.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ManagerStartupActionPerformed
-
-    private void ManagerStartup2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerStartup2ActionPerformed
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         AdminDashboard as = new AdminDashboard();
         as.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_ManagerStartup2ActionPerformed
+    }//GEN-LAST:event_logoutMouseClicked
 
-    private void ManagerStartup3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerStartup3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ManagerStartup3ActionPerformed
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        logout.setBackground(h);
+    }//GEN-LAST:event_logoutMouseEntered
 
-    private void ManagerStartup4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerStartup4ActionPerformed
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        logout.setBackground(d);
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_ManagerStartup4ActionPerformed
+    }//GEN-LAST:event_deleteMouseClicked
+
+    private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
+        delete.setBackground(h);
+    }//GEN-LAST:event_deleteMouseEntered
+
+    private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
+        delete.setBackground(d);
+    }//GEN-LAST:event_deleteMouseExited
+
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addMouseClicked
+
+    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
+        add.setBackground(h);
+    }//GEN-LAST:event_addMouseEntered
+
+    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
+        add.setBackground(d);
+    }//GEN-LAST:event_addMouseExited
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateMouseClicked
+
+    private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
+        update.setBackground(h);
+    }//GEN-LAST:event_updateMouseEntered
+
+    private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
+        update.setBackground(d);
+    }//GEN-LAST:event_updateMouseExited
 
     /**
      * @param args the command line arguments
@@ -201,13 +281,17 @@ public class U_Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Main;
-    private javax.swing.JButton ManagerStartup;
-    private javax.swing.JButton ManagerStartup2;
-    private javax.swing.JButton ManagerStartup3;
-    private javax.swing.JButton ManagerStartup4;
     private javax.swing.JPanel Navigation;
     private javax.swing.JTable account_table;
+    private javax.swing.JPanel add;
+    private javax.swing.JPanel delete;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel logout;
+    private javax.swing.JPanel update;
     // End of variables declaration//GEN-END:variables
 }

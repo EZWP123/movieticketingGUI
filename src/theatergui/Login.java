@@ -5,6 +5,8 @@
  */
 package theatergui;
 
+import java.awt.Color;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,9 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form managerLogin
-     */
+    private Color H;
+    Color h = new Color(51,51,255);
+    private Color D;
+    Color d = new Color(240,240,240);
+    
+    
+    
     public Login() {
         initComponents();
         this.setResizable(false);
@@ -44,8 +50,10 @@ public class Login extends javax.swing.JFrame {
         passwordML = new javax.swing.JPasswordField();
         MR_clickhere = new javax.swing.JLabel();
         usernameML = new javax.swing.JTextField();
-        managerCancel = new javax.swing.JButton();
-        ConfirmLM = new javax.swing.JButton();
+        confirm = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        cancel = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,23 +154,45 @@ public class Login extends javax.swing.JFrame {
         });
         Manager_Login1.add(usernameML, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 200, 330, 30));
 
-        managerCancel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        managerCancel.setText("Cancel");
-        managerCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                managerCancelActionPerformed(evt);
+        confirm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confirmMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                confirmMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                confirmMouseExited(evt);
             }
         });
-        Manager_Login1.add(managerCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
+        confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ConfirmLM.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        ConfirmLM.setText("Confirm");
-        ConfirmLM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfirmLMActionPerformed(evt);
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Login");
+        confirm.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+
+        Manager_Login1.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 550, 90, 30));
+
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
             }
         });
-        Manager_Login1.add(ConfirmLM, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 550, 90, 30));
+        cancel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Cancel");
+        cancel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+
+        Manager_Login1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
 
         Manager_Login.add(Manager_Login1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -181,12 +211,6 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void managerCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managerCancelActionPerformed
-        StartupPanel sp = new StartupPanel();
-        sp.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_managerCancelActionPerformed
-
     private void usernameMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameMLActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameMLActionPerformed
@@ -201,13 +225,38 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_MR_clickhereMouseClicked
 
-    private void ConfirmLMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmLMActionPerformed
-        if(usernameML.getText().isEmpty() || passwordML.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null, "Please Fill All Boxes");
+    private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
+    String uname = usernameML.getText().trim();
+    String pass = new String(passwordML.getPassword()).trim();
+        
+            if(uname.isEmpty() || pass.isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please Fill All Boxes");
+            }
+        
+    }//GEN-LAST:event_confirmMouseClicked
 
-        }
-    }//GEN-LAST:event_ConfirmLMActionPerformed
+    private void confirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseEntered
+        confirm.setBackground(h);
+    }//GEN-LAST:event_confirmMouseEntered
+
+    private void confirmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseExited
+        confirm.setBackground(d);
+    }//GEN-LAST:event_confirmMouseExited
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        StartupPanel mn = new StartupPanel();
+        mn.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
+        cancel.setBackground(h);
+    }//GEN-LAST:event_cancelMouseEntered
+
+    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
+        cancel.setBackground(d);
+    }//GEN-LAST:event_cancelMouseExited
 
     /**
      * @param args the command line arguments
@@ -252,7 +301,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConfirmLM;
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Header1;
     private javax.swing.JLabel MR_clickhere;
@@ -260,11 +308,14 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Manager_Login1;
     private javax.swing.JPanel Navigation;
     private javax.swing.JPanel Navigation1;
+    private javax.swing.JPanel cancel;
+    private javax.swing.JPanel confirm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JButton managerCancel;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField passwordML;
     private javax.swing.JTextField usernameML;
     // End of variables declaration//GEN-END:variables

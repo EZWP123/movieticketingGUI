@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package theatergui;
+package Processes;
 
-/**
- *
- * @author DANIEL FAILADONA
- */
+import java.awt.Color;
+import theatergui.StartupPanel;
+
+
 public class showMovies extends javax.swing.JFrame {
 
-    /**
-     * Creates new form showMovies
-     */
+    private Color H;
+    Color h = new Color(51,51,255);
+    private Color D;
+    Color d = new Color(240,240,240);
+    
+    
     public showMovies() {
         initComponents();
         this.setResizable(false);
@@ -32,8 +35,9 @@ public class showMovies extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Navigation = new javax.swing.JPanel();
-        CancelButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        cancel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,20 +71,31 @@ public class showMovies extends javax.swing.JFrame {
 
         Showing_Movies.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
 
-        CancelButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        CancelButton.setText("Cancel");
-        CancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
-            }
-        });
-        Showing_Movies.add(CancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
-
         jLabel2.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Coming soon");
         Showing_Movies.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 600, 140));
+
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
+            }
+        });
+        cancel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Cancel");
+        cancel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+
+        Showing_Movies.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,11 +112,19 @@ public class showMovies extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
         StartupPanel mn = new StartupPanel();
         mn.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_CancelButtonActionPerformed
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
+        cancel.setBackground(h);
+    }//GEN-LAST:event_cancelMouseEntered
+
+    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
+        cancel.setBackground(d);
+    }//GEN-LAST:event_cancelMouseExited
 
     /**
      * @param args the command line arguments
@@ -139,11 +162,12 @@ public class showMovies extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CancelButton;
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Navigation;
     private javax.swing.JPanel Showing_Movies;
+    private javax.swing.JPanel cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,18 +6,20 @@
 package theatergui;
 
 import config.dbConnect;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.sql.*;
 
-/**
- *
- * @author DANIEL FAILADONA
- */
+
 public class Registration extends javax.swing.JFrame {
 
-    /**
-     * Creates new form newManager
-     */
+    
+    private Color H;
+    Color h = new Color(51,51,255);
+    private Color D;
+    Color d = new Color(240,240,240);
+    
+    
     public Registration() {
         initComponents();
         this.setResizable(false);
@@ -38,11 +40,9 @@ public class Registration extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        MR_cancel = new javax.swing.JButton();
         MR_username = new javax.swing.JTextField();
         MR_passwordConfirm = new javax.swing.JPasswordField();
         MR_password = new javax.swing.JPasswordField();
-        ConfirmNM = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         Lname = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -51,6 +51,10 @@ public class Registration extends javax.swing.JFrame {
         PhoneNum = new javax.swing.JTextField();
         type = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
+        cancel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        confirm = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,15 +106,6 @@ public class Registration extends javax.swing.JFrame {
         jLabel5.setText("Confirm Password:");
         New_Manager.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 140, 30));
 
-        MR_cancel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        MR_cancel.setText("Cancel");
-        MR_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MR_cancelActionPerformed(evt);
-            }
-        });
-        New_Manager.add(MR_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
-
         MR_username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         MR_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,15 +129,6 @@ public class Registration extends javax.swing.JFrame {
             }
         });
         New_Manager.add(MR_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 330, 30));
-
-        ConfirmNM.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        ConfirmNM.setText("Confirm");
-        ConfirmNM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfirmNMActionPerformed(evt);
-            }
-        });
-        New_Manager.add(ConfirmNM, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 550, 90, 30));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,6 +181,46 @@ public class Registration extends javax.swing.JFrame {
         jLabel9.setText("Username:");
         New_Manager.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 80, 30));
 
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
+            }
+        });
+        cancel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Cancel");
+        cancel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+
+        New_Manager.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
+
+        confirm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confirmMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                confirmMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                confirmMouseExited(evt);
+            }
+        });
+        confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Confirm");
+        confirm.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+
+        New_Manager.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 550, 90, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,12 +236,6 @@ public class Registration extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MR_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MR_cancelActionPerformed
-        Login l = new Login();
-        l.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_MR_cancelActionPerformed
-
     private void MR_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MR_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MR_usernameActionPerformed
@@ -228,7 +248,33 @@ public class Registration extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MR_passwordConfirmActionPerformed
 
-    private void ConfirmNMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmNMActionPerformed
+    private void LnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LnameActionPerformed
+
+    private void FnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FnameActionPerformed
+
+    private void PhoneNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PhoneNumActionPerformed
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        Login l = new Login();
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
+        cancel.setBackground(h);
+    }//GEN-LAST:event_cancelMouseEntered
+
+    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
+        cancel.setBackground(d);
+    }//GEN-LAST:event_cancelMouseExited
+
+    private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
     dbConnect dbc = new dbConnect();
     String fn = Fname.getText().trim();
     String ln = Lname.getText().trim();
@@ -265,19 +311,15 @@ public class Registration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Registered succesfully!");
             
         }
-    }//GEN-LAST:event_ConfirmNMActionPerformed
+    }//GEN-LAST:event_confirmMouseClicked
 
-    private void LnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LnameActionPerformed
+    private void confirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseEntered
+        confirm.setBackground(h);
+    }//GEN-LAST:event_confirmMouseEntered
 
-    private void FnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FnameActionPerformed
-
-    private void PhoneNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PhoneNumActionPerformed
+    private void confirmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseExited
+        confirm.setBackground(d);
+    }//GEN-LAST:event_confirmMouseExited
 
     /**
      * @param args the command line arguments
@@ -330,18 +372,20 @@ public class Registration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConfirmNM;
     private javax.swing.JTextField Fname;
     private javax.swing.JPanel Header;
     private javax.swing.JTextField Lname;
-    private javax.swing.JButton MR_cancel;
     private javax.swing.JPasswordField MR_password;
     private javax.swing.JPasswordField MR_passwordConfirm;
     private javax.swing.JTextField MR_username;
     private javax.swing.JPanel Navigation;
     private javax.swing.JPanel New_Manager;
     private javax.swing.JTextField PhoneNum;
+    private javax.swing.JPanel cancel;
+    private javax.swing.JPanel confirm;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
