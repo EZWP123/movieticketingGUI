@@ -5,6 +5,7 @@
  */
 package theatergui;
 
+import theatergui.Login;
 import config.dbConnect;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -23,6 +24,47 @@ public class Registration extends javax.swing.JFrame {
     public Registration() {
         initComponents();
         this.setResizable(false);
+    }
+    
+    public static String phone,usname;
+   
+
+    
+    public boolean duplicateCheck()
+    {
+        dbConnect dbc = new dbConnect();
+        String p = PhoneNum.getText().trim();
+        String us = MR_username.getText().trim();
+        
+        try
+        {
+            String query = "SELECT * FROM tbl_accounts WHERE u_username='"+ us +"'OR u_phone='"+ p +"'";
+            ResultSet resultSet = dbc.getData(query);
+            if(resultSet.next())
+            {
+                phone = resultSet.getString("u_phone");
+                if(phone.equals(p))
+                {
+                    JOptionPane.showMessageDialog(null, "Phone Number is Already Used");
+                    PhoneNum.setText("");
+                }
+                
+                usname = resultSet.getString("u_username");
+                if(usname.equals(us))
+                {
+                    JOptionPane.showMessageDialog(null, "Username is Already Used");
+                    MR_username.setText("");
+                }
+                return true;
+            }else
+            {
+                return false;
+            }
+        }catch(SQLException ex)
+        {
+            System.out.println(""+ex);
+            return false;
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -305,11 +347,16 @@ public class Registration extends javax.swing.JFrame {
         }else if(p.length() > 15 || p.length() < 11)
         {
             JOptionPane.showMessageDialog(null, "Invalid Phone num");
+        }else if(duplicateCheck())
+        {
+            System.out.println("Duplicate Exists");
         }else if (dbc.insertData("INSERT INTO tbl_accounts (u_fname, u_lname, u_username, u_type, u_password, u_phone, u_status) "
-        + "VALUES ('" + fn + "', '" + ln + "', '" + uname + "', '"+at+"','" + pass + "', '" + p + "', 'Pending')") == 0) 
+        + "VALUES ('" + fn + "', '" + ln + "', '" + uname + "', '"+at+"','" + pass + "', '" + p + "', 'Pending')")) 
         {
             JOptionPane.showMessageDialog(null, "Registered succesfully!");
-            
+            Login l = new Login();
+            l.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_confirmMouseClicked
 

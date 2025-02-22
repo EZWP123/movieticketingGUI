@@ -47,8 +47,6 @@ public class StartupPanel extends javax.swing.JFrame {
         Navigation1 = new javax.swing.JPanel();
         ShowM = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        Test = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         Login = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -134,37 +132,6 @@ public class StartupPanel extends javax.swing.JFrame {
 
         Main1.add(ShowM, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, 230, 50));
 
-        Test.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TestMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                TestMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                TestMouseExited(evt);
-            }
-        });
-        Test.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Testing");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel2MouseExited(evt);
-            }
-        });
-        Test.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 15, 220, -1));
-
-        Main1.add(Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, 230, 50));
-
         Login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LoginMouseClicked(evt);
@@ -222,34 +189,6 @@ public class StartupPanel extends javax.swing.JFrame {
         Login.setBackground(d);
     }//GEN-LAST:event_LoginMouseExited
 
-    private void TestMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TestMouseExited
-        Test.setBackground(d);
-    }//GEN-LAST:event_TestMouseExited
-
-    private void TestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TestMouseEntered
-        Test.setBackground(h);
-    }//GEN-LAST:event_TestMouseEntered
-
-    private void TestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TestMouseClicked
-        AdminDashboard ad = new AdminDashboard();
-        ad.setVisible(true);
-        this.dispose();    
-    }//GEN-LAST:event_TestMouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        AdminDashboard ad = new AdminDashboard();
-        ad.setVisible(true);
-        this.dispose();  
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        Test.setBackground(h);
-    }//GEN-LAST:event_jLabel2MouseEntered
-
-    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-        Test.setBackground(d);
-    }//GEN-LAST:event_jLabel2MouseExited
-
     private void ShowMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowMMouseEntered
         ShowM.setBackground(h);
     }//GEN-LAST:event_ShowMMouseEntered
@@ -303,9 +242,7 @@ public class StartupPanel extends javax.swing.JFrame {
     private javax.swing.JPanel Navigation;
     private javax.swing.JPanel Navigation1;
     private javax.swing.JPanel ShowM;
-    private javax.swing.JPanel Test;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

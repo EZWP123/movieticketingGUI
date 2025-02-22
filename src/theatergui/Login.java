@@ -5,9 +5,17 @@
  */
 package theatergui;
 
+import Employee.EmployeeDashboard;
+import admin.AdminDashboard;
+import config.dbConnect;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import theatergui.StartupPanel;
 
 /**
  *
@@ -25,9 +33,37 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setResizable(false);
-
     }
 
+    static String status;
+    static String type;
+
+    
+    public static boolean logAcc(String username, String password)
+    {
+        dbConnect connector = new dbConnect();
+        try
+        {
+            String query = "SELECT * FROM tbl_accounts WHERE u_username='"+ username +"'AND u_password='"+ password +"'";
+            ResultSet resultSet = connector.getData(query);
+            if(resultSet.next())
+            {
+                status = resultSet.getString("u_status");
+                type = resultSet.getString("u_type");
+
+                return true;
+            }else
+            {
+                return false;
+            }
+        }catch(SQLException ex)
+        {
+            return false;
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -228,12 +264,36 @@ public class Login extends javax.swing.JFrame {
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
     String uname = usernameML.getText().trim();
     String pass = new String(passwordML.getPassword()).trim();
-        
-            if(uname.isEmpty() || pass.isEmpty())
+    
+        if(logAcc(uname,pass))
+        {
+            if(!status.equals("Active"))
             {
-                JOptionPane.showMessageDialog(null, "Please Fill All Boxes");
+                JOptionPane.showMessageDialog(null, "Inactive Account, Contact the Admin");
+            }else
+            {
+                
+                if(type.equals("Admin"))
+                {
+                    JOptionPane.showMessageDialog(null, "Login Succesfully");
+                    AdminDashboard ad = new AdminDashboard();
+                    ad.setVisible(true);
+                    this.dispose();
+                }if(type.equals("Employee"))
+                {
+                    JOptionPane.showMessageDialog(null, "Login Succesfully");
+                    EmployeeDashboard ed = new EmployeeDashboard();
+                    ed.setVisible(true);
+                    this.dispose();
+                }else
+                {
+                    JOptionPane.showMessageDialog(null, "Unknown Account Type, Contact the Admin");
+                }
             }
-        
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Invalid Account");
+        }
     }//GEN-LAST:event_confirmMouseClicked
 
     private void confirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseEntered
