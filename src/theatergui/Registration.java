@@ -79,6 +79,7 @@ public class Registration extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Navigation = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -97,10 +98,12 @@ public class Registration extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        New_Manager.setBackground(new java.awt.Color(39, 39, 39));
+        New_Manager.setBackground(new java.awt.Color(102, 102, 102));
         New_Manager.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Header.setBackground(new java.awt.Color(0, 0, 0));
@@ -117,15 +120,27 @@ public class Registration extends javax.swing.JFrame {
 
         Navigation.setBackground(new java.awt.Color(51, 51, 51));
 
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/e.jpg"))); // NOI18N
+
         javax.swing.GroupLayout NavigationLayout = new javax.swing.GroupLayout(Navigation);
         Navigation.setLayout(NavigationLayout);
         NavigationLayout.setHorizontalGroup(
             NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(NavigationLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         NavigationLayout.setVerticalGroup(
             NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
+            .addGroup(NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(NavigationLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         New_Manager.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
@@ -134,19 +149,19 @@ public class Registration extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Select Account Type:");
-        New_Manager.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 150, 30));
+        New_Manager.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 150, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Password:");
-        New_Manager.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 80, 30));
+        New_Manager.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 80, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Confirm Password:");
-        New_Manager.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 140, 30));
+        New_Manager.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 140, 30));
 
         MR_username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         MR_username.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +169,7 @@ public class Registration extends javax.swing.JFrame {
                 MR_usernameActionPerformed(evt);
             }
         });
-        New_Manager.add(MR_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 330, 30));
+        New_Manager.add(MR_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, 330, 30));
 
         MR_passwordConfirm.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         MR_passwordConfirm.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +177,7 @@ public class Registration extends javax.swing.JFrame {
                 MR_passwordConfirmActionPerformed(evt);
             }
         });
-        New_Manager.add(MR_passwordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 390, 330, 30));
+        New_Manager.add(MR_passwordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 330, 30));
 
         MR_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         MR_password.addActionListener(new java.awt.event.ActionListener() {
@@ -170,13 +185,13 @@ public class Registration extends javax.swing.JFrame {
                 MR_passwordActionPerformed(evt);
             }
         });
-        New_Manager.add(MR_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 330, 30));
+        New_Manager.add(MR_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, 330, 30));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Last Name:");
-        New_Manager.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 190, 80, 30));
+        New_Manager.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 80, 30));
 
         Lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Lname.addActionListener(new java.awt.event.ActionListener() {
@@ -184,13 +199,13 @@ public class Registration extends javax.swing.JFrame {
                 LnameActionPerformed(evt);
             }
         });
-        New_Manager.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, 330, 30));
+        New_Manager.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 330, 30));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("  First Name:");
-        New_Manager.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 140, 90, 30));
+        New_Manager.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 90, 30));
 
         Fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Fname.addActionListener(new java.awt.event.ActionListener() {
@@ -198,13 +213,13 @@ public class Registration extends javax.swing.JFrame {
                 FnameActionPerformed(evt);
             }
         });
-        New_Manager.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 140, 330, 30));
+        New_Manager.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, 330, 30));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Phone Number:");
-        New_Manager.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 130, 30));
+        New_Manager.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 440, 130, 30));
 
         PhoneNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PhoneNum.addActionListener(new java.awt.event.ActionListener() {
@@ -212,16 +227,21 @@ public class Registration extends javax.swing.JFrame {
                 PhoneNumActionPerformed(evt);
             }
         });
-        New_Manager.add(PhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 440, 330, 30));
+        New_Manager.add(PhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 330, 30));
 
         type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee", "Manager" }));
-        New_Manager.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, 330, 30));
+        type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeActionPerformed(evt);
+            }
+        });
+        New_Manager.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 330, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Username:");
-        New_Manager.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 80, 30));
+        New_Manager.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, 80, 30));
 
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -241,7 +261,7 @@ public class Registration extends javax.swing.JFrame {
         jLabel10.setText("Cancel");
         cancel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
 
-        New_Manager.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
+        New_Manager.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 520, 90, 30));
 
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -261,7 +281,13 @@ public class Registration extends javax.swing.JFrame {
         jLabel11.setText("Confirm");
         confirm.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
 
-        New_Manager.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 550, 90, 30));
+        New_Manager.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 520, 90, 30));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/po.png"))); // NOI18N
+        New_Manager.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 480, 560));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kl.png"))); // NOI18N
+        New_Manager.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 570, 240, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -368,6 +394,10 @@ public class Registration extends javax.swing.JFrame {
         confirm.setBackground(d);
     }//GEN-LAST:event_confirmMouseExited
 
+    private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -433,6 +463,9 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -77,6 +77,7 @@ public class Login extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Navigation = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         Manager_Login1 = new javax.swing.JPanel();
         Header1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -90,6 +91,8 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         cancel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,26 +107,38 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Login Form");
-        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, 40));
+        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 30, 1310, 40));
 
         Manager_Login.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
 
         Navigation.setBackground(new java.awt.Color(51, 51, 51));
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/e.jpg"))); // NOI18N
+
         javax.swing.GroupLayout NavigationLayout = new javax.swing.GroupLayout(Navigation);
         Navigation.setLayout(NavigationLayout);
         NavigationLayout.setHorizontalGroup(
             NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(NavigationLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         NavigationLayout.setVerticalGroup(
             NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
+            .addGroup(NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(NavigationLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         Manager_Login.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
 
-        Manager_Login1.setBackground(new java.awt.Color(39, 39, 39));
+        Manager_Login1.setBackground(new java.awt.Color(102, 102, 102));
         Manager_Login1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Header1.setBackground(new java.awt.Color(0, 0, 0));
@@ -156,12 +171,12 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Username:");
-        Manager_Login1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 200, 80, 30));
+        Manager_Login1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 80, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password:");
-        Manager_Login1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 80, 30));
+        Manager_Login1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 80, 30));
 
         passwordML.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         passwordML.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +184,7 @@ public class Login extends javax.swing.JFrame {
                 passwordMLActionPerformed(evt);
             }
         });
-        Manager_Login1.add(passwordML, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 330, 30));
+        Manager_Login1.add(passwordML, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, 330, 30));
 
         MR_clickhere.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         MR_clickhere.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,7 +195,7 @@ public class Login extends javax.swing.JFrame {
                 MR_clickhereMouseClicked(evt);
             }
         });
-        Manager_Login1.add(MR_clickhere, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, 330, 20));
+        Manager_Login1.add(MR_clickhere, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 300, 330, 20));
 
         usernameML.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         usernameML.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +203,7 @@ public class Login extends javax.swing.JFrame {
                 usernameMLActionPerformed(evt);
             }
         });
-        Manager_Login1.add(usernameML, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 200, 330, 30));
+        Manager_Login1.add(usernameML, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, 330, 30));
 
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -206,9 +221,9 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Login");
-        confirm.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+        confirm.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, -1));
 
-        Manager_Login1.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 550, 90, 30));
+        Manager_Login1.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 450, 90, 30));
 
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -228,19 +243,27 @@ public class Login extends javax.swing.JFrame {
         jLabel6.setText("Cancel");
         cancel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
 
-        Manager_Login1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
+        Manager_Login1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 450, 90, 30));
 
-        Manager_Login.add(Manager_Login1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/po.png"))); // NOI18N
+        Manager_Login1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 480, 560));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kl.png"))); // NOI18N
+        Manager_Login1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 570, 240, 80));
+
+        Manager_Login.add(Manager_Login1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Manager_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Manager_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Manager_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Manager_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 637, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -265,31 +288,34 @@ public class Login extends javax.swing.JFrame {
     String uname = usernameML.getText().trim();
     String pass = new String(passwordML.getPassword()).trim();
     
-        if(logAcc(uname,pass))
+        if(pass.isEmpty() || uname.isEmpty())
         {
-            if(!status.equals("Active"))
+            JOptionPane.showMessageDialog(null, "Please Fill all Boxes");
+        }else if(logAcc(uname,pass))
+        {
+        if(!status.equals("Active"))
+        {
+            JOptionPane.showMessageDialog(null, "Inactive Account, Contact the Admin");
+        }else
+        {
+
+            if(type.equals("Admin"))
             {
-                JOptionPane.showMessageDialog(null, "Inactive Account, Contact the Admin");
-            }else
+                JOptionPane.showMessageDialog(null, "Login Succesfully");
+                AdminDashboard ad = new AdminDashboard();
+                ad.setVisible(true);
+                this.dispose();
+            }else if(type.equals("Employee"))
             {
-                
-                if(type.equals("Admin"))
-                {
-                    JOptionPane.showMessageDialog(null, "Login Succesfully");
-                    AdminDashboard ad = new AdminDashboard();
-                    ad.setVisible(true);
-                    this.dispose();
-                }if(type.equals("Employee"))
-                {
-                    JOptionPane.showMessageDialog(null, "Login Succesfully");
-                    EmployeeDashboard ed = new EmployeeDashboard();
-                    ed.setVisible(true);
-                    this.dispose();
-                }else
-                {
-                    JOptionPane.showMessageDialog(null, "Unknown Account Type, Contact the Admin");
-                }
+                JOptionPane.showMessageDialog(null, "Login Succesfully");
+                EmployeeDashboard ed = new EmployeeDashboard();
+                ed.setVisible(true);
+                this.dispose();
+            }else if(!type.equals("Employee") || !type.equals("Pending") || !type.equals("Admin"))
+            {
+                JOptionPane.showMessageDialog(null, "Unknown Account Type, Contact the Admin");
             }
+        }
         }else
         {
             JOptionPane.showMessageDialog(null, "Invalid Account");
@@ -376,6 +402,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField passwordML;
     private javax.swing.JTextField usernameML;
     // End of variables declaration//GEN-END:variables

@@ -42,10 +42,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         users = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Main.setBackground(new java.awt.Color(39, 39, 39));
+        Main.setBackground(new java.awt.Color(51, 51, 51));
         Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Header.setBackground(new java.awt.Color(0, 0, 0));
@@ -60,7 +61,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
 
-        Navigation.setBackground(new java.awt.Color(51, 51, 51));
+        Navigation.setBackground(new java.awt.Color(102, 102, 102));
         Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,6 +103,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         users.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 12, 300, -1));
 
         Navigation.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 300, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/po.png"))); // NOI18N
+        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -40, 450, 430));
 
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 540));
 
@@ -251,6 +255,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel users;
     // End of variables declaration//GEN-END:variables

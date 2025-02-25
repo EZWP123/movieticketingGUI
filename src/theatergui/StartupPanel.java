@@ -40,15 +40,18 @@ public class StartupPanel extends javax.swing.JFrame {
         Main = new javax.swing.JPanel();
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Navigation = new javax.swing.JPanel();
         Main1 = new javax.swing.JPanel();
         Header1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         Navigation1 = new javax.swing.JPanel();
+        Navigation = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         ShowM = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Login = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,26 +66,11 @@ public class StartupPanel extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Theater Ticketing System");
-        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, 40));
+        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 30, 1310, 40));
 
         Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
 
-        Navigation.setBackground(new java.awt.Color(51, 51, 51));
-
-        javax.swing.GroupLayout NavigationLayout = new javax.swing.GroupLayout(Navigation);
-        Navigation.setLayout(NavigationLayout);
-        NavigationLayout.setHorizontalGroup(
-            NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        NavigationLayout.setVerticalGroup(
-            NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
-        );
-
-        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
-
-        Main1.setBackground(new java.awt.Color(39, 39, 39));
+        Main1.setBackground(new java.awt.Color(102, 102, 102));
         Main1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Header1.setBackground(new java.awt.Color(0, 0, 0));
@@ -99,15 +87,25 @@ public class StartupPanel extends javax.swing.JFrame {
 
         Navigation1.setBackground(new java.awt.Color(51, 51, 51));
 
+        Navigation.setBackground(new java.awt.Color(51, 51, 51));
+        Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/e.jpg"))); // NOI18N
+        Navigation.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 680, 590));
+
         javax.swing.GroupLayout Navigation1Layout = new javax.swing.GroupLayout(Navigation1);
         Navigation1.setLayout(Navigation1Layout);
         Navigation1Layout.setHorizontalGroup(
             Navigation1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGroup(Navigation1Layout.createSequentialGroup()
+                .addComponent(Navigation, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Navigation1Layout.setVerticalGroup(
             Navigation1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGroup(Navigation1Layout.createSequentialGroup()
+                .addComponent(Navigation, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         Main1.add(Navigation1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
@@ -130,7 +128,7 @@ public class StartupPanel extends javax.swing.JFrame {
         jLabel4.setText("Show Movies");
         ShowM.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 15, 230, -1));
 
-        Main1.add(ShowM, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, 230, 50));
+        Main1.add(ShowM, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 230, 50));
 
         Login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,9 +148,15 @@ public class StartupPanel extends javax.swing.JFrame {
         jLabel5.setText("Login");
         Login.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 15, 220, -1));
 
-        Main1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, 230, 50));
+        Main1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 330, 230, 50));
 
-        Main.add(Main1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kl.png"))); // NOI18N
+        Main1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 550, 510, 110));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/po.png"))); // NOI18N
+        Main1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 480, 560));
+
+        Main.add(Main1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,5 +250,8 @@ public class StartupPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
