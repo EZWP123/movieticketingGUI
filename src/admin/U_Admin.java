@@ -10,7 +10,7 @@ import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
-import theatergui.Login;
+import Startups.Login;
 
 
 public class U_Admin extends javax.swing.JFrame {

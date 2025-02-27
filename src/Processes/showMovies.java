@@ -6,7 +6,7 @@
 package Processes;
 
 import java.awt.Color;
-import theatergui.StartupPanel;
+import Startups.StartupPanel;
 
 
 public class showMovies extends javax.swing.JFrame {

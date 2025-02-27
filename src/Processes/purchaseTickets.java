@@ -5,7 +5,7 @@
  */
 package Processes;
 
-import theatergui.StartupPanel;
+import Startups.StartupPanel;
 
 /**
  *

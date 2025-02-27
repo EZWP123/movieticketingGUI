@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package theatergui;
+package Startups;
 
 import Employee.EmployeeDashboard;
 import admin.AdminDashboard;
@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import theatergui.StartupPanel;
+import Startups.StartupPanel;
 
 /**
  *
