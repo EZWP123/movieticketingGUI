@@ -5,7 +5,7 @@
  */
 package Processes;
 
-import Startups.StartupPanel;
+import Startups.startingpanel;
 
 /**
  *
@@ -100,7 +100,7 @@ public class purchaseTickets extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void purchaseCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseCancelActionPerformed
-        StartupPanel mn = new StartupPanel();
+        startingpanel mn = new startingpanel();
         mn.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_purchaseCancelActionPerformed

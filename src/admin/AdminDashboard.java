@@ -5,23 +5,60 @@
  */
 package admin;
 
+import Startups.LoginForm;
 import java.awt.Color;
-import Startups.StartupPanel;
-
-/**
- *
- * @author DANIEL FAILADONA
- */
+import Startups.startingpanel;
+import config.Session;
+import config.dbConnect;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
+import javax.swing.JOptionPane;
 public class AdminDashboard extends javax.swing.JFrame {
 
     private Color H;
     Color h = new Color(51,51,255);
     private Color D;
     Color d = new Color(240,240,240);
-    
-    
     public AdminDashboard() {
         initComponents();
+    }
+    
+    
+    public void logEvent(int userId, String username, String action) {
+        dbConnect dbc = new dbConnect();
+        Connection con = dbc.getConnection();
+        PreparedStatement pstmt = null;
+        Timestamp time = new Timestamp(new Date().getTime());
+
+        try {
+            String sql = "INSERT INTO tbl_logs (u_id, u_username, action_time, log_action) "
+                    + "VALUES ('" + userId + "', '" + username + "', '" + time + "', '" + action + "')";
+            pstmt = con.prepareStatement(sql);
+
+            /*            pstmt.setInt(1, userId);
+            pstmt.setString(2, username);
+            pstmt.setTimestamp(3, new Timestamp(new Date().getTime()));
+            pstmt.setString(4, userType);*/
+            pstmt.executeUpdate();
+            System.out.println("Login log recorded successfully.");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error recording log: " + e.getMessage());
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error closing resources: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -39,11 +76,31 @@ public class AdminDashboard extends javax.swing.JFrame {
         Navigation = new javax.swing.JPanel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        acc_fname = new javax.swing.JLabel();
+        acc_lname = new javax.swing.JLabel();
+        acc_uname = new javax.swing.JLabel();
+        acc_type = new javax.swing.JLabel();
+        acc_phone = new javax.swing.JLabel();
+        acc_id = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        users1 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         users = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        users2 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        users3 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        users4 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         Main.setBackground(new java.awt.Color(51, 51, 51));
         Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,14 +131,75 @@ public class AdminDashboard extends javax.swing.JFrame {
                 logoutMouseExited(evt);
             }
         });
-        logout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        logout.setLayout(null);
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Logout");
-        logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
+        logout.add(jLabel10);
+        jLabel10.setBounds(0, 10, 130, 22);
 
         Navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 493, 130, 40));
+
+        acc_fname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        acc_fname.setForeground(new java.awt.Color(255, 255, 255));
+        acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_fname.setText("First Name");
+        Navigation.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 300, 30));
+
+        acc_lname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        acc_lname.setForeground(new java.awt.Color(255, 255, 255));
+        acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_lname.setText("Last Name");
+        Navigation.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 300, 30));
+
+        acc_uname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        acc_uname.setForeground(new java.awt.Color(255, 255, 255));
+        acc_uname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_uname.setText("User Name");
+        Navigation.add(acc_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 300, 30));
+
+        acc_type.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        acc_type.setForeground(new java.awt.Color(255, 255, 255));
+        acc_type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_type.setText("Type");
+        Navigation.add(acc_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 300, 30));
+
+        acc_phone.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        acc_phone.setForeground(new java.awt.Color(255, 255, 255));
+        acc_phone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_phone.setText("Phone");
+        Navigation.add(acc_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 300, 30));
+
+        acc_id.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        acc_id.setForeground(new java.awt.Color(255, 255, 255));
+        acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_id.setText("ID");
+        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 30));
+        Navigation.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -90, 310, 160));
+
+        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 540));
+
+        users1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                users1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                users1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                users1MouseExited(evt);
+            }
+        });
+        users1.setLayout(null);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Change Pass");
+        users1.add(jLabel14);
+        jLabel14.setBounds(0, 25, 160, 22);
+
+        Main.add(users1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 160, 70));
 
         users.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -94,19 +212,84 @@ public class AdminDashboard extends javax.swing.JFrame {
                 usersMouseExited(evt);
             }
         });
-        users.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        users.setLayout(null);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Users");
-        users.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 12, 300, -1));
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Users");
+        users.add(jLabel12);
+        jLabel12.setBounds(0, 25, 160, 20);
 
-        Navigation.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 300, 50));
+        Main.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 160, 70));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/po.png"))); // NOI18N
-        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -90, 310, 570));
+        users2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                users2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                users2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                users2MouseExited(evt);
+            }
+        });
+        users2.setLayout(null);
 
-        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 540));
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Logs");
+        users2.add(jLabel15);
+        jLabel15.setBounds(0, 25, 160, 22);
+
+        Main.add(users2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, 160, 70));
+
+        users3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                users3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                users3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                users3MouseExited(evt);
+            }
+        });
+        users3.setLayout(null);
+
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Add Password");
+        users3.add(jLabel16);
+        jLabel16.setBounds(0, 10, 160, 22);
+
+        jLabel17.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Recovery");
+        users3.add(jLabel17);
+        jLabel17.setBounds(0, 40, 160, 22);
+
+        Main.add(users3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, 160, 70));
+
+        users4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                users4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                users4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                users4MouseExited(evt);
+            }
+        });
+        users4.setLayout(null);
+
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Manage Movies");
+        users4.add(jLabel18);
+        jLabel18.setBounds(0, 25, 160, 22);
+
+        Main.add(users4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 160, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,11 +303,30 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
-        StartupPanel sp = new StartupPanel();
+        dbConnect connector = new dbConnect();
+        dbConnect dbc = new dbConnect();
+        Session sess = Session.getInstance();
+        int userId = 0;
+        String uname = null;
+        try {
+            String query2 = "SELECT * FROM tbl_accounts WHERE u_id = '" + sess.getUid() + "'";
+            PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
+
+            ResultSet resultSet = pstmt.executeQuery();
+
+            if (resultSet.next()) {
+                userId = resultSet.getInt("u_id");   // Update the outer `userId` correctly
+                uname = resultSet.getString("u_username");
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception: " + ex);
+        }
+
+        logEvent(userId, uname, "Logged Out");
+        startingpanel sp = new startingpanel();
         sp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutMouseClicked
@@ -150,6 +352,81 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void usersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseExited
         users.setBackground(d);
     }//GEN-LAST:event_usersMouseExited
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+       if(sess.getUid() == 0)
+       {
+           JOptionPane.showMessageDialog(null,"No Account, Login FIrst");
+           LoginForm l = new LoginForm();
+           l.setVisible(true);
+           this.dispose();
+       }else
+       {
+           acc_fname.setText("" + sess.getFname());
+           acc_lname.setText("" + sess.getLname());
+           acc_uname.setText("" + sess.getUname());
+           acc_type.setText("" + sess.getType());
+           acc_phone.setText("" + sess.getPhone());
+           acc_id.setText("" + sess.getUid());
+       }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void users1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users1MouseClicked
+    Admin_ChangePass acp = new Admin_ChangePass();
+    acp.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_users1MouseClicked
+
+    private void users1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users1MouseEntered
+        users1.setBackground(h);
+    }//GEN-LAST:event_users1MouseEntered
+
+    private void users1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users1MouseExited
+        users1.setBackground(d);
+    }//GEN-LAST:event_users1MouseExited
+
+    private void users2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users2MouseClicked
+        Logs_Admin la = new Logs_Admin();
+        la.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_users2MouseClicked
+
+    private void users2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users2MouseEntered
+        users2.setBackground(h);
+    }//GEN-LAST:event_users2MouseEntered
+
+    private void users2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users2MouseExited
+        users2.setBackground(d);
+    }//GEN-LAST:event_users2MouseExited
+
+    private void users3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users3MouseClicked
+    A_Add_Recovery aar = new A_Add_Recovery();
+    aar.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_users3MouseClicked
+
+    private void users3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users3MouseEntered
+        users3.setBackground(h);
+    }//GEN-LAST:event_users3MouseEntered
+
+    private void users3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users3MouseExited
+        users3.setBackground(d);
+    }//GEN-LAST:event_users3MouseExited
+
+    private void users4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users4MouseClicked
+        productForm pf = new productForm();
+        pf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_users4MouseClicked
+
+    private void users4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users4MouseEntered
+        users4.setBackground(h);
+    }//GEN-LAST:event_users4MouseEntered
+
+    private void users4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users4MouseExited
+        users4.setBackground(d);
+    }//GEN-LAST:event_users4MouseExited
 
     /**
      * @param args the command line arguments
@@ -178,36 +455,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -221,11 +468,26 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Main;
     private javax.swing.JPanel Navigation;
+    private javax.swing.JLabel acc_fname;
+    private javax.swing.JLabel acc_id;
+    private javax.swing.JLabel acc_lname;
+    private javax.swing.JLabel acc_phone;
+    private javax.swing.JLabel acc_type;
+    private javax.swing.JLabel acc_uname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel users;
+    private javax.swing.JPanel users1;
+    private javax.swing.JPanel users2;
+    private javax.swing.JPanel users3;
+    private javax.swing.JPanel users4;
     // End of variables declaration//GEN-END:variables
 }

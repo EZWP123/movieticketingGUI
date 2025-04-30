@@ -6,7 +6,14 @@
 package Processes;
 
 import java.awt.Color;
-import Startups.StartupPanel;
+import Startups.startingpanel;
+import config.dbConnect;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 
 public class showMovies extends javax.swing.JFrame {
@@ -20,7 +27,69 @@ public class showMovies extends javax.swing.JFrame {
     public showMovies() {
         initComponents();
         this.setResizable(false);
+        NotShowDeletedUsers();
     }
+    
+    
+    
+    public void NotShowDeletedUsers() {
+        // Create a list to store filtered row data
+        List<Object[]> rowData = new ArrayList<>();
+
+        try {
+            dbConnect dbc = new dbConnect();
+            ResultSet rs = dbc.getData("SELECT * FROM tbl_products");
+
+            while (rs.next()) {
+                // Store each column value in a separate variable
+                String u = rs.getString("p_id");
+                String pn = rs.getString("p_name");
+                String pp = rs.getString("p_price");
+                String status = rs.getString("p_status");
+                String qnty = rs.getString("p_quantity");
+
+                // Check if the user status is not "Deleted"
+                if (!status.equals("Deleted")) {
+
+                    // Add the row to the list
+                    rowData.add(new Object[]{
+                        u,
+                        pn,
+                        pp,
+                        status,
+                        qnty
+                    });
+                    /*System.out.println("\n==========");
+                    System.out.println(""+u);
+                    System.out.println(""+fn);
+                    System.out.println(""+ln);
+                    System.out.println(""+uname);
+                    System.out.println(""+at);
+                    System.out.println(""+p);
+                    System.out.println(""+status);*/
+                }
+            }
+
+            // After processing all rows, update the table on the Swing event dispatch thread
+            SwingUtilities.invokeLater(() -> {
+                DefaultTableModel model = new DefaultTableModel(
+                        new String[]{"ID", "Movie Name", "Price", "Status", "Stocks"}, 0
+                );
+                for (Object[] row : rowData) {
+                    model.addRow(row);
+                }
+                showMovies_table.setModel(model);
+                showMovies_table.repaint(); // Force visual refresh
+            });
+
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,9 +104,10 @@ public class showMovies extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Navigation = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         cancel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        showMovies_table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,25 +127,7 @@ public class showMovies extends javax.swing.JFrame {
         Showing_Movies.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
 
         Navigation.setBackground(new java.awt.Color(51, 51, 51));
-
-        javax.swing.GroupLayout NavigationLayout = new javax.swing.GroupLayout(Navigation);
-        Navigation.setLayout(NavigationLayout);
-        NavigationLayout.setHorizontalGroup(
-            NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        NavigationLayout.setVerticalGroup(
-            NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
-        );
-
-        Showing_Movies.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Coming soon");
-        Showing_Movies.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 600, 140));
+        Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,10 +144,24 @@ public class showMovies extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Cancel");
+        jLabel3.setText("Back");
         cancel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
 
-        Showing_Movies.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 90, 30));
+        Navigation.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, -1, 30));
+
+        Showing_Movies.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
+
+        showMovies_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(showMovies_table);
+
+        Showing_Movies.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 690, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,7 +179,7 @@ public class showMovies extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-        StartupPanel mn = new StartupPanel();
+        startingpanel mn = new startingpanel();
         mn.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelMouseClicked
@@ -167,7 +233,8 @@ public class showMovies extends javax.swing.JFrame {
     private javax.swing.JPanel Showing_Movies;
     private javax.swing.JPanel cancel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable showMovies_table;
     // End of variables declaration//GEN-END:variables
 }

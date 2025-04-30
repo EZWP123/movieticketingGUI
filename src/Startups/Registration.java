@@ -5,9 +5,12 @@
  */
 package Startups;
 
-import Startups.Login;
+import Startups.LoginForm;
+import config.Session;
 import config.dbConnect;
+import config.passwordHasher;
 import java.awt.Color;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
 import java.sql.*;
 
@@ -26,10 +29,9 @@ public class Registration extends javax.swing.JFrame {
         this.setResizable(false);
     }
     
+    
     public static String phone,usname;
    
-
-    
     public boolean duplicateCheck()
     {
         dbConnect dbc = new dbConnect();
@@ -38,7 +40,7 @@ public class Registration extends javax.swing.JFrame {
         
         try
         {
-            String query = "SELECT * FROM tbl_accounts WHERE u_username='"+ us +"'OR u_phone='"+ p +"'";
+            String query = "SELECT * FROM tbl_accounts WHERE u_username='"+ us +"'OR u_phone='"+ p +"'"; //If output mentions something about ''', there is a missin '
             ResultSet resultSet = dbc.getData(query);
             if(resultSet.next())
             {
@@ -66,6 +68,43 @@ public class Registration extends javax.swing.JFrame {
             return false;
         }
     }
+    
+    
+    public void logEvent(int userId, String username, String action) 
+    {
+        dbConnect dbc = new dbConnect();
+        Connection con = dbc.getConnection();
+        PreparedStatement pstmt = null;
+        Timestamp time = new Timestamp(new java.util.Date().getTime());
+
+        try 
+        {    
+            String sql = "INSERT INTO tbl_logs (u_id, u_username, action_time, log_action) "
+                                     + "VALUES ('" + userId + "', '" + username + "', '" + time + "', '" + action + "')";
+            pstmt = con.prepareStatement(sql);
+
+            /*            pstmt.setInt(1, userId);
+            pstmt.setString(2, username);
+            pstmt.setTimestamp(3, new Timestamp(new Date().getTime()));
+            pstmt.setString(4, userType);*/
+
+            pstmt.executeUpdate();
+            System.out.println("Login log recorded successfully.");
+        } catch (SQLException e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error recording log: " + e.getMessage());
+        } finally 
+        {
+            try 
+            {
+                if (pstmt != null) pstmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) 
+            {
+                JOptionPane.showMessageDialog(null, "Error closing resources: " + e.getMessage());
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,172 +115,103 @@ public class Registration extends javax.swing.JFrame {
     private void initComponents() {
 
         New_Manager = new javax.swing.JPanel();
-        Header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        Navigation = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         MR_username = new javax.swing.JTextField();
         MR_passwordConfirm = new javax.swing.JPasswordField();
         MR_password = new javax.swing.JPasswordField();
-        jLabel6 = new javax.swing.JLabel();
         Lname = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         Fname = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         PhoneNum = new javax.swing.JTextField();
         type = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
         cancel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        check = new javax.swing.JCheckBox();
+        check1 = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        New_Manager.setBackground(new java.awt.Color(102, 102, 102));
+        New_Manager.setBackground(new java.awt.Color(103, 10, 10));
+        New_Manager.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         New_Manager.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Header.setBackground(new java.awt.Color(0, 0, 0));
-        Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(0, 255, 0));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manager Registration");
-        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, 40));
-
-        New_Manager.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
-
-        Navigation.setBackground(new java.awt.Color(51, 51, 51));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/e.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout NavigationLayout = new javax.swing.GroupLayout(Navigation);
-        Navigation.setLayout(NavigationLayout);
-        NavigationLayout.setHorizontalGroup(
-            NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
-            .addGroup(NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(NavigationLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        NavigationLayout.setVerticalGroup(
-            NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-            .addGroup(NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(NavigationLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        New_Manager.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Select Account Type:");
-        New_Manager.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 150, 30));
+        New_Manager.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 190, 20));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Password:");
-        New_Manager.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 80, 30));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Confirm Password:");
-        New_Manager.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 140, 30));
-
+        MR_username.setBackground(new java.awt.Color(103, 10, 10));
         MR_username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        MR_username.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         MR_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MR_usernameActionPerformed(evt);
             }
         });
-        New_Manager.add(MR_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, 330, 30));
+        New_Manager.add(MR_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 440, 50));
 
+        MR_passwordConfirm.setBackground(new java.awt.Color(103, 10, 10));
         MR_passwordConfirm.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        MR_passwordConfirm.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Confirm Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         MR_passwordConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MR_passwordConfirmActionPerformed(evt);
             }
         });
-        New_Manager.add(MR_passwordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 330, 30));
+        New_Manager.add(MR_passwordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 440, 50));
 
+        MR_password.setBackground(new java.awt.Color(103, 10, 10));
         MR_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        MR_password.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         MR_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MR_passwordActionPerformed(evt);
             }
         });
-        New_Manager.add(MR_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, 330, 30));
+        New_Manager.add(MR_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 440, 50));
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Last Name:");
-        New_Manager.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 80, 30));
-
+        Lname.setBackground(new java.awt.Color(103, 10, 10));
         Lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Lname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Last Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         Lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LnameActionPerformed(evt);
             }
         });
-        New_Manager.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 330, 30));
+        New_Manager.add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 440, 50));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("  First Name:");
-        New_Manager.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 90, 30));
-
+        Fname.setBackground(new java.awt.Color(103, 10, 10));
         Fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Fname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "First Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         Fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FnameActionPerformed(evt);
             }
         });
-        New_Manager.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, 330, 30));
+        New_Manager.add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 440, 50));
 
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Phone Number:");
-        New_Manager.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 440, 130, 30));
-
+        PhoneNum.setBackground(new java.awt.Color(103, 10, 10));
         PhoneNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PhoneNum.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Contact no.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         PhoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PhoneNumActionPerformed(evt);
             }
         });
-        New_Manager.add(PhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 330, 30));
+        New_Manager.add(PhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 440, 50));
 
-        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee", "Manager" }));
+        type.setBackground(new java.awt.Color(103, 10, 10));
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee", "Admin" }));
+        type.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeActionPerformed(evt);
             }
         });
-        New_Manager.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 330, 30));
-
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Username:");
-        New_Manager.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, 80, 30));
+        New_Manager.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 440, 30));
 
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,14 +224,15 @@ public class Registration extends javax.swing.JFrame {
                 cancelMouseExited(evt);
             }
         });
-        cancel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        cancel.setLayout(null);
 
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Cancel");
-        cancel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+        cancel.add(jLabel10);
+        jLabel10.setBounds(0, 10, 130, 20);
 
-        New_Manager.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 520, 90, 30));
+        New_Manager.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 560, 130, 40));
 
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -274,30 +245,54 @@ public class Registration extends javax.swing.JFrame {
                 confirmMouseExited(evt);
             }
         });
-        confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        confirm.setLayout(null);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Confirm");
-        confirm.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+        confirm.add(jLabel11);
+        jLabel11.setBounds(0, 10, 130, 22);
 
-        New_Manager.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 520, 90, 30));
+        New_Manager.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 560, 130, 40));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/po.png"))); // NOI18N
-        New_Manager.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 480, 560));
+        check.setBackground(new java.awt.Color(103, 10, 10));
+        check.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        check.setForeground(new java.awt.Color(255, 255, 255));
+        check.setText("Show");
+        check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkActionPerformed(evt);
+            }
+        });
+        New_Manager.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, -1, -1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kl.png"))); // NOI18N
-        New_Manager.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 570, 240, 90));
+        check1.setBackground(new java.awt.Color(103, 10, 10));
+        check1.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        check1.setForeground(new java.awt.Color(255, 255, 255));
+        check1.setText("Show");
+        check1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check1ActionPerformed(evt);
+            }
+        });
+        New_Manager.add(check1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, -1, -1));
+
+        jLabel1.setBackground(new java.awt.Color(0, 255, 0));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Registration Form");
+        New_Manager.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 870, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(New_Manager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(New_Manager, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(New_Manager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(New_Manager, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
         );
 
         pack();
@@ -329,7 +324,7 @@ public class Registration extends javax.swing.JFrame {
     }//GEN-LAST:event_PhoneNumActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-        Login l = new Login();
+        LoginForm l = new LoginForm();
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelMouseClicked
@@ -344,22 +339,30 @@ public class Registration extends javax.swing.JFrame {
 
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
     dbConnect dbc = new dbConnect();
+    Session sess = Session.getInstance();
+    dbConnect connector = new dbConnect();
     String fn = Fname.getText().trim();
     String ln = Lname.getText().trim();
     String uname = MR_username.getText().trim();
-    String pass = new String(MR_password.getPassword()).trim();
+    String passw = new String(MR_password.getPassword()).trim();
     String Cpass = new String(MR_passwordConfirm.getPassword()).trim();
     String p = PhoneNum.getText().trim();
     String at = type.getSelectedItem().toString().trim();
+    Timestamp time = new Timestamp(new java.util.Date().getTime());
+    int userId = 0;
+    String im = "";
+    String sq = "";
+    String sa = "";
+
     
 
 
 
-        if(uname.isEmpty() || pass.isEmpty() || Cpass.isEmpty() || ln.isEmpty() || fn.isEmpty())
+        if(uname.isEmpty() || passw.isEmpty() || Cpass.isEmpty() || ln.isEmpty() || fn.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Please Fill All Boxes");
 
-        }else if(!pass.equals(Cpass))
+        }else if(!passw.equals(Cpass))
         {
             JOptionPane.showMessageDialog(null, "Password Does Not Match");
             //System.out.println("Password ["+password+"] Length: "+password.length());
@@ -367,22 +370,67 @@ public class Registration extends javax.swing.JFrame {
         }else if(!p.matches("\\d+"))
         {
             JOptionPane.showMessageDialog(null, "Phone Must Only Contain Numbers");
-        }else if(pass.length() <= 7)
+        }else if(passw.length() <= 7)
         {
             JOptionPane.showMessageDialog(null, "Password Must be Exactly 8 Characters Long");
-        }else if(p.length() > 15 || p.length() < 11)
+        }else if(!p.matches("\\d{11,15}"))
         {
             JOptionPane.showMessageDialog(null, "Invalid Phone num");
         }else if(duplicateCheck())
         {
             System.out.println("Duplicate Exists");
-        }else if (dbc.insertData("INSERT INTO tbl_accounts (u_fname, u_lname, u_username, u_type, u_password, u_phone, u_status) "
-        + "VALUES ('" + fn + "', '" + ln + "', '" + uname + "', '"+at+"','" + pass + "', '" + p + "', 'Pending')")) 
+        }else
         {
-            JOptionPane.showMessageDialog(null, "Registered succesfully!");
-            Login l = new Login();
-            l.setVisible(true);
-            this.dispose();
+            try
+            {
+//                String query = "SELECT * FROM tbl_accounts WHERE u_id='" + sess.getUid() + "'";
+//                System.out.println(""+ sess.getUid() );
+//                ResultSet rs = dbc.getData(query);
+//                if (rs.next()) 
+//                {
+                
+                    String pass = passwordHasher.hashPassword(passw); // Datatype vairiable = classname.voidName(ToBEConvertedVariable)
+                    
+
+                    if(dbc.insertData("INSERT INTO tbl_accounts (u_fname     ,u_lname      , u_username     , u_type  , u_password    , u_phone  , u_image  , u_status, security_question, security_answer) "
+                                                      + "VALUES ('" + fn + "', '" + ln + "', '" + uname + "', '"+at+"', '" + pass + "', '" + p + "', '" + im + "',   'Pending',  '" + sq + "',  '" + sa + "')")) //Changed Phone into Varchar due to aql data limits
+                    {
+                        
+                        
+                        
+                        try 
+                        {
+                            String query = "SELECT u_id FROM tbl_accounts WHERE u_username = '" + uname + "'";
+                            PreparedStatement pstmt = connector.getConnection().prepareStatement(query);
+
+                            ResultSet resultSet = pstmt.executeQuery();
+
+                            if (resultSet.next()) 
+                            {
+                                userId = resultSet.getInt("u_id");   // Update the outer `userId` correctly
+                            }
+                        } catch (SQLException ex) 
+                        {
+                            System.out.println("SQL Exception: " + ex);
+                        }
+                        
+                        logEvent(userId, uname, "Registered for the first time");
+                        
+                        
+                        
+                        
+                        
+                        JOptionPane.showMessageDialog(null, "Registered succesfully!");
+                        LoginForm l = new LoginForm();
+                        l.setVisible(true);
+                        this.dispose();
+                    }
+//                }
+// There was no need to use string query
+            }catch(NoSuchAlgorithmException ex)
+            {
+                System.out.println(""+ ex);
+            }
         }
     }//GEN-LAST:event_confirmMouseClicked
 
@@ -397,6 +445,26 @@ public class Registration extends javax.swing.JFrame {
     private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_typeActionPerformed
+
+    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
+        boolean isSelected = check.isSelected();
+
+        if (isSelected) {
+            MR_password.setEchoChar((char)0);
+        } else {
+            MR_password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_checkActionPerformed
+
+    private void check1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check1ActionPerformed
+        boolean isSelected = check1.isSelected();
+
+        if (isSelected) {
+            MR_passwordConfirm.setEchoChar((char)0);
+        } else {
+            MR_passwordConfirm.setEchoChar('*');
+        }
+    }//GEN-LAST:event_check1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,29 +518,20 @@ public class Registration extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Fname;
-    private javax.swing.JPanel Header;
     private javax.swing.JTextField Lname;
     private javax.swing.JPasswordField MR_password;
     private javax.swing.JPasswordField MR_passwordConfirm;
     private javax.swing.JTextField MR_username;
-    private javax.swing.JPanel Navigation;
     private javax.swing.JPanel New_Manager;
     private javax.swing.JTextField PhoneNum;
     private javax.swing.JPanel cancel;
+    private javax.swing.JCheckBox check;
+    private javax.swing.JCheckBox check1;
     private javax.swing.JPanel confirm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JComboBox<String> type;
     // End of variables declaration//GEN-END:variables
 }
