@@ -103,18 +103,18 @@ public class showMovies extends javax.swing.JFrame {
         Showing_Movies = new javax.swing.JPanel();
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Navigation = new javax.swing.JPanel();
-        cancel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         showMovies_table = new javax.swing.JTable();
+        cancel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Showing_Movies.setBackground(new java.awt.Color(39, 39, 39));
+        Showing_Movies.setBackground(new java.awt.Color(103, 10, 10));
         Showing_Movies.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Header.setBackground(new java.awt.Color(0, 0, 0));
+        Header.setBackground(new java.awt.Color(103, 10, 10));
+        Header.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 255, 0));
@@ -126,8 +126,17 @@ public class showMovies extends javax.swing.JFrame {
 
         Showing_Movies.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
 
-        Navigation.setBackground(new java.awt.Color(51, 51, 51));
-        Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        showMovies_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(showMovies_table);
+
+        Showing_Movies.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 500));
 
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,26 +151,12 @@ public class showMovies extends javax.swing.JFrame {
         });
         cancel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Back");
-        cancel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, -1));
+        cancel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 130, 70));
 
-        Navigation.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, -1, 30));
-
-        Showing_Movies.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 630, 540));
-
-        showMovies_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(showMovies_table);
-
-        Showing_Movies.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 690, 540));
+        Showing_Movies.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, 280, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,19 +173,19 @@ public class showMovies extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-        startingpanel mn = new startingpanel();
-        mn.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_cancelMouseClicked
+    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
+        cancel.setBackground(d);
+    }//GEN-LAST:event_cancelMouseExited
 
     private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
         cancel.setBackground(h);
     }//GEN-LAST:event_cancelMouseEntered
 
-    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
-        cancel.setBackground(d);
-    }//GEN-LAST:event_cancelMouseExited
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        startingpanel mn = new startingpanel();
+        mn.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -229,7 +224,6 @@ public class showMovies extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
-    private javax.swing.JPanel Navigation;
     private javax.swing.JPanel Showing_Movies;
     private javax.swing.JPanel cancel;
     private javax.swing.JLabel jLabel1;

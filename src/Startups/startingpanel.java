@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author DANIEL FAILADONA
+
  */
 public class startingpanel extends javax.swing.JFrame {
 

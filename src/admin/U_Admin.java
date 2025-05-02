@@ -127,7 +127,7 @@ public class U_Admin extends javax.swing.JFrame {
 
         String sql = "SELECT * FROM tbl_accounts";
 
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/theater_db", "root", "");
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/movie_db", "root", "");
              PreparedStatement pst = con.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) 
         {
@@ -281,24 +281,25 @@ public class U_Admin extends javax.swing.JFrame {
         Navigation = new javax.swing.JPanel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        account_table = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         add = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         update = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         delete = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        account_table = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Main.setBackground(new java.awt.Color(39, 39, 39));
+        Main.setBackground(new java.awt.Color(103, 10, 10));
         Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Header.setBackground(new java.awt.Color(0, 0, 0));
+        Header.setBackground(new java.awt.Color(103, 10, 10));
+        Header.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 255, 0));
@@ -306,11 +307,12 @@ public class U_Admin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Dashboard");
-        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, 40));
+        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1100, 40));
 
-        Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
+        Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 120));
 
-        Navigation.setBackground(new java.awt.Color(102, 102, 102));
+        Navigation.setBackground(new java.awt.Color(103, 10, 10));
+        Navigation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -332,6 +334,25 @@ public class U_Admin extends javax.swing.JFrame {
         logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
 
         Navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 493, 130, 40));
+        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 310, 140));
+
+        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 300, 520));
+
+        account_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(account_table);
+
+        Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 800, 430));
+
+        jScrollPane2.setViewportView(jEditorPane1);
+
+        Main.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, -1, -1));
 
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -350,9 +371,9 @@ public class U_Admin extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("ADD");
         add.add(jLabel13);
-        jLabel13.setBounds(75, 10, 130, 22);
+        jLabel13.setBounds(40, 12, 140, 20);
 
-        Navigation.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 300, 40));
+        Main.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 210, 40));
 
         update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -371,9 +392,9 @@ public class U_Admin extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("UPDATE");
         update.add(jLabel14);
-        jLabel14.setBounds(100, 10, 80, 20);
+        jLabel14.setBounds(0, 10, 220, 20);
 
-        Navigation.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 300, 40));
+        Main.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 210, 40));
 
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -392,34 +413,15 @@ public class U_Admin extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("DELETE");
         delete.add(jLabel11);
-        jLabel11.setBounds(100, 10, 80, 22);
+        jLabel11.setBounds(40, 10, 190, 22);
 
-        Navigation.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 300, 40));
-        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -80, 380, 220));
-
-        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 540));
-
-        account_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(account_table);
-
-        Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 1020, 430));
-
-        jScrollPane2.setViewportView(jEditorPane1);
-
-        Main.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, -1, -1));
+        Main.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 230, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Main, javax.swing.GroupLayout.PREFERRED_SIZE, 1099, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,7 +446,7 @@ public class U_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseExited
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-        CU_Admin cua = new CU_Admin();
+        AddUser_Admin cua = new AddUser_Admin();
         cua.setVisible(true);
         this.dispose();
         cua.Select.setEnabled(true);
@@ -465,7 +467,7 @@ public class U_Admin extends javax.swing.JFrame {
 
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
         int rowIndex = account_table.getSelectedRow();
-        CU_Admin cua = new CU_Admin();
+        AddUser_Admin cua = new AddUser_Admin();
         cua.Select.setEnabled(true);
         cua.Remove.setEnabled(true);
 
@@ -474,7 +476,7 @@ public class U_Admin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please select an Item");
         }else
         {
-//            CU_Admin cua = new CU_Admin();
+//            AddUser_Admin cua = new AddUser_Admin();
 
             try
             {

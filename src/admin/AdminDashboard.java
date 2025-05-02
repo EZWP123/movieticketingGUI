@@ -74,8 +74,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Navigation = new javax.swing.JPanel();
-        logout = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
         acc_fname = new javax.swing.JLabel();
         acc_lname = new javax.swing.JLabel();
         acc_uname = new javax.swing.JLabel();
@@ -94,6 +92,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         users4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        logout = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -102,10 +102,11 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        Main.setBackground(new java.awt.Color(51, 51, 51));
+        Main.setBackground(new java.awt.Color(103, 10, 10));
         Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Header.setBackground(new java.awt.Color(0, 0, 0));
+        Header.setBackground(new java.awt.Color(103, 10, 10));
+        Header.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 255, 0));
@@ -113,63 +114,43 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Dashboard");
-        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, 40));
+        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 840, 40));
 
-        Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
+        Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 100));
 
-        Navigation.setBackground(new java.awt.Color(102, 102, 102));
+        Navigation.setBackground(new java.awt.Color(103, 10, 10));
+        Navigation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        logout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                logoutMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                logoutMouseExited(evt);
-            }
-        });
-        logout.setLayout(null);
-
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Logout");
-        logout.add(jLabel10);
-        jLabel10.setBounds(0, 10, 130, 22);
-
-        Navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 493, 130, 40));
 
         acc_fname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_fname.setForeground(new java.awt.Color(255, 255, 255));
         acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_fname.setText("First Name");
-        Navigation.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 300, 30));
+        Navigation.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 300, 30));
 
         acc_lname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_lname.setForeground(new java.awt.Color(255, 255, 255));
         acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_lname.setText("Last Name");
-        Navigation.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 300, 30));
+        Navigation.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 300, 30));
 
         acc_uname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_uname.setForeground(new java.awt.Color(255, 255, 255));
         acc_uname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_uname.setText("User Name");
-        Navigation.add(acc_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 300, 30));
+        Navigation.add(acc_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 300, 30));
 
         acc_type.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_type.setForeground(new java.awt.Color(255, 255, 255));
         acc_type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_type.setText("Type");
-        Navigation.add(acc_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 300, 30));
+        Navigation.add(acc_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 300, 30));
 
         acc_phone.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_phone.setForeground(new java.awt.Color(255, 255, 255));
         acc_phone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_phone.setText("Phone");
-        Navigation.add(acc_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 300, 30));
+        Navigation.add(acc_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 300, 30));
 
         acc_id.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,7 +180,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users1.add(jLabel14);
         jLabel14.setBounds(0, 25, 160, 22);
 
-        Main.add(users1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 160, 70));
+        Main.add(users1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 160, 70));
 
         users.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -220,7 +201,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users.add(jLabel12);
         jLabel12.setBounds(0, 25, 160, 20);
 
-        Main.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 160, 70));
+        Main.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 160, 70));
 
         users2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -241,7 +222,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users2.add(jLabel15);
         jLabel15.setBounds(0, 25, 160, 22);
 
-        Main.add(users2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, 160, 70));
+        Main.add(users2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, 160, 70));
 
         users3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -268,7 +249,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users3.add(jLabel17);
         jLabel17.setBounds(0, 40, 160, 22);
 
-        Main.add(users3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, 160, 70));
+        Main.add(users3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 160, 70));
 
         users4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -289,13 +270,34 @@ public class AdminDashboard extends javax.swing.JFrame {
         users4.add(jLabel18);
         jLabel18.setBounds(0, 25, 160, 22);
 
-        Main.add(users4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 160, 70));
+        Main.add(users4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 160, 70));
+
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+        logout.setLayout(null);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Logout");
+        logout.add(jLabel10);
+        jLabel10.setBounds(40, 20, 80, 30);
+
+        Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 160, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Main, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,7 +403,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_users2MouseExited
 
     private void users3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users3MouseClicked
-    A_Add_Recovery aar = new A_Add_Recovery();
+    Admin_Add_Recovery aar = new Admin_Add_Recovery();
     aar.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_users3MouseClicked
@@ -415,7 +417,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_users3MouseExited
 
     private void users4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users4MouseClicked
-        productForm pf = new productForm();
+        Addmovie pf = new Addmovie();
         pf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_users4MouseClicked

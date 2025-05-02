@@ -5,7 +5,7 @@
  */
 package Startups;
 
-import Employee.EmployeeDashboard;
+import User.UserDashboard;
 import admin.AdminDashboard;
 import config.dbConnect;
 import java.awt.Color;
@@ -24,7 +24,7 @@ import java.util.Date;
 
 /**
  *
- * @author DANIEL FAILADONA
+
  */
 public class LoginForm extends javax.swing.JFrame {
 
@@ -347,7 +347,7 @@ public class LoginForm extends javax.swing.JFrame {
                     logEvent(userId, uname, "Logged as Employee");
                     JOptionPane.showMessageDialog(null, "Login Successfully");
 
-                    EmployeeDashboard ed = new EmployeeDashboard();
+                    UserDashboard ed = new UserDashboard();
                     ed.setVisible(true);
                     this.dispose();
                 } else if(type.equals("Deleted"))

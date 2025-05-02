@@ -23,7 +23,7 @@ public class dbConnect
     {
         try
         {
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/theater_db", "root", "");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/movie_db", "root", "");
         }catch(SQLException ex)
         {
             System.out.println("Can't connect to database: "+ex.getMessage());

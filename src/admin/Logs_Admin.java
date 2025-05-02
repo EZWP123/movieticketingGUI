@@ -125,7 +125,7 @@ public class Logs_Admin extends javax.swing.JFrame {
 
     String sql = "SELECT * FROM tbl_accounts";
 
-    try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/theater_db", "root", "");
+    try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/movie_db", "root", "");
          PreparedStatement pst = con.prepareStatement(sql);
          ResultSet rs = pst.executeQuery()) 
     {
@@ -290,7 +290,8 @@ public class Logs_Admin extends javax.swing.JFrame {
         Main.setBackground(new java.awt.Color(39, 39, 39));
         Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Header.setBackground(new java.awt.Color(0, 0, 0));
+        Header.setBackground(new java.awt.Color(103, 10, 10));
+        Header.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 255, 0));
@@ -302,7 +303,8 @@ public class Logs_Admin extends javax.swing.JFrame {
 
         Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
 
-        Navigation.setBackground(new java.awt.Color(102, 102, 102));
+        Navigation.setBackground(new java.awt.Color(103, 10, 10));
+        Navigation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -338,7 +340,7 @@ public class Logs_Admin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(account_table);
 
-        Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 1020, 540));
+        Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 800, 540));
 
         jScrollPane2.setViewportView(jEditorPane1);
 
@@ -348,7 +350,9 @@ public class Logs_Admin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Main, javax.swing.GroupLayout.PREFERRED_SIZE, 1099, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

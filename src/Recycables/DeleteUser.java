@@ -9,7 +9,7 @@ package Recycables;
 
 /**
  *
- * @author DANIEL FAILADONA
+ 
  */
 public class DeleteUser {
     
