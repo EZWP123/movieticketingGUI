@@ -5,6 +5,7 @@
  */
 package User;
 
+import Processes.Transactionticket;
 import admin.*;
 import java.sql.ResultSet;           // For ResultSet
 import java.sql.SQLException;         // For SQLException
@@ -310,7 +311,7 @@ Qnty.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() 
             // After processing all rows, update the table on the Swing event dispatch thread
             SwingUtilities.invokeLater(() -> {
                 DefaultTableModel model = new DefaultTableModel(
-                        new String[]{"ID", "Movie Name", "Price", "Status", "Stocks"}, 0
+                        new String[]{"ID", "Movie Name", "Price", "Status"}, 0
                 );
                 for (Object[] row : rowData) {
                     model.addRow(row);
@@ -553,7 +554,7 @@ if (rs2.next()) {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Price to Pay:");
-        Main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, 100, 30));
+        Main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, 100, 30));
 
         Price.setEditable(false);
         Price.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -562,13 +563,13 @@ if (rs2.next()) {
                 PriceActionPerformed(evt);
             }
         });
-        Main.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, 330, 30));
+        Main.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 330, 30));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Movie Name:");
-        Main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 110, 30));
+        Main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 110, 30));
 
         Mname.setEditable(false);
         Mname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -577,7 +578,7 @@ if (rs2.next()) {
                 MnameActionPerformed(evt);
             }
         });
-        Main.add(Mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 330, 30));
+        Main.add(Mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, 330, 30));
 
         PID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PID.setEnabled(false);
@@ -586,13 +587,13 @@ if (rs2.next()) {
                 PIDActionPerformed(evt);
             }
         });
-        Main.add(PID, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 150, 330, 30));
+        Main.add(PID, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, 330, 30));
 
         jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("MovieID");
-        Main.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 90, 30));
+        Main.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 90, 30));
 
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -610,10 +611,15 @@ if (rs2.next()) {
         con.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         con.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         con.setText("CONFIRM");
+        con.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                conMouseClicked(evt);
+            }
+        });
         add.add(con);
         con.setBounds(10, 10, 130, 22);
 
-        Main.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 560, 130, 40));
+        Main.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 570, 130, 40));
 
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -633,13 +639,13 @@ if (rs2.next()) {
         jLabel10.setText("Back");
         logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
 
-        Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 560, -1, 40));
+        Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, -1, 40));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Quanity:");
-        Main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 80, 30));
+        Main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 80, 30));
 
         Qnty.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Qnty.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -652,13 +658,13 @@ if (rs2.next()) {
                 QntyActionPerformed(evt);
             }
         });
-        Main.add(Qnty, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 330, 30));
+        Main.add(Qnty, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, 330, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Enter Payment:");
-        Main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 120, 30));
+        Main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 510, 120, 30));
 
         Payment.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Payment.addActionListener(new java.awt.event.ActionListener() {
@@ -666,7 +672,7 @@ if (rs2.next()) {
                 PaymentActionPerformed(evt);
             }
         });
-        Main.add(Payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, 330, 30));
+        Main.add(Payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 510, 330, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -795,8 +801,8 @@ if (rs2.next()) {
                         logEvent(userId, uname2, "User made transaction ID: " + mn);
 
                         JOptionPane.showMessageDialog(null, "Added succesfully!");
-                        UserDashboard ed = new UserDashboard();
-                        ed.setVisible(true);
+                        Transactionticket tt = new Transactionticket();
+                        tt.setVisible(true);
                         this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "An error occured");
@@ -902,6 +908,10 @@ if (rs2.next()) {
         System.out.println("" + e);
     }
     }//GEN-LAST:event_QntyMouseClicked
+
+    private void conMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_conMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_conMouseClicked
 
     /**
      * @param args the command line arguments

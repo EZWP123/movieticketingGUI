@@ -22,6 +22,8 @@ import config.Session;
 import static java.awt.Color.black;
 import static java.awt.Color.red;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -43,6 +45,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
 public class Addmovie extends javax.swing.JFrame {
 
      private Color H;
@@ -51,6 +54,7 @@ public class Addmovie extends javax.swing.JFrame {
     Color d = new Color(240,240,240);
     
     public Addmovie() {
+        
         initComponents();
         NotShowDeletedUsers();
 //    displayData();
@@ -156,21 +160,7 @@ public class Addmovie extends javax.swing.JFrame {
         return -1;
     }
 
-    public ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
-        ImageIcon MyImage = null;
-        if (ImagePath != null) {
-            MyImage = new ImageIcon(ImagePath);
-        } else {
-            MyImage = new ImageIcon(pic);
-        }
-
-        int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
-
-        Image img = MyImage.getImage();
-        Image newImg = img.getScaledInstance(label.getWidth(), newHeight, Image.SCALE_SMOOTH);
-        ImageIcon image = new ImageIcon(newImg);
-        return image;
-    }
+   
 
     public void imageUpdater(String existingFilePath, String newFilePath) {
         File existingFile = new File(existingFilePath);
@@ -212,7 +202,7 @@ public class Addmovie extends javax.swing.JFrame {
                 String pn = rs.getString("p_name");
                 String pp = rs.getString("p_price");
                 String status = rs.getString("p_status");
-                
+                String imgPath = rs.getString("p_image");
 
                 // Check if the user status is not "Deleted"
                 if (!status.equals("Deleted")) {
@@ -425,7 +415,7 @@ public class Addmovie extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         account_table = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        image = new javax.swing.JLabel();
+        movieimage = new javax.swing.JLabel();
         Remove = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         Select = new javax.swing.JPanel();
@@ -485,8 +475,8 @@ public class Addmovie extends javax.swing.JFrame {
         Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 530, 530));
 
         jPanel1.setLayout(null);
-        jPanel1.add(image);
-        image.setBounds(10, 10, 190, 170);
+        jPanel1.add(movieimage);
+        movieimage.setBounds(10, 10, 190, 170);
 
         Main.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, 210, 190));
 
@@ -723,7 +713,7 @@ public class Addmovie extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseExited
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-       if (addClickable) {
+  if (addClickable) {
         dbConnect dbc = new dbConnect();
         Session sess = Session.getInstance();
         dbConnect connector = new dbConnect();
@@ -805,6 +795,7 @@ public class Addmovie extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Clear the Fields First");
         }
+                                  
     }//GEN-LAST:event_addMouseClicked
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
@@ -815,87 +806,16 @@ public class Addmovie extends javax.swing.JFrame {
         add.setBackground(d);
     }//GEN-LAST:event_addMouseExited
 
-    private void RemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseClicked
-        Remove.setEnabled(false);
-        Select.setEnabled(true);
-        image.setIcon(null);
-        destination = "";
-        path = "";
-    }//GEN-LAST:event_RemoveMouseClicked
-
-    private void RemoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseEntered
-        Remove.setBackground(h);
-    }//GEN-LAST:event_RemoveMouseEntered
-
-    private void RemoveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseExited
-        Remove.setBackground(d);
-    }//GEN-LAST:event_RemoveMouseExited
-
-    private void SelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseClicked
-        //         imageuploadjava.txt
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            try {
-                
-                selectedFile = fileChooser.getSelectedFile();
-                destination = "src/userimages/" + selectedFile.getName();
-                path = selectedFile.getAbsolutePath();
-
-                if (FileExistenceChecker(path) == 1) {
-                    JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
-                    destination = "";
-                    path = "";
-                } else {
-                    image.setIcon(ResizeImage(path, null, image));
-                    Select.setEnabled(false);
-                    Remove.setEnabled(true);
-                }
-            } catch (Exception ex) {
-                System.out.println("File Error!");
-            }
-        }
-    }//GEN-LAST:event_SelectMouseClicked
-
-    private void SelectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseEntered
-        Select.setBackground(h);
-    }//GEN-LAST:event_SelectMouseEntered
-
-    private void SelectMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseExited
-        Select.setBackground(d);
-    }//GEN-LAST:event_SelectMouseExited
-
-    private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PriceActionPerformed
-
-    private void MnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MnameActionPerformed
-
-    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statusActionPerformed
-
-    private void PIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PIDActionPerformed
-
     private void account_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_account_tableMouseClicked
         int rowIndex = account_table.getSelectedRow();
-
-
-        if (rowIndex < 0) {
+   if (rowIndex < 0) {
             JOptionPane.showMessageDialog(null, "Please select an Item");
         } else {
-//            AddUser_Admin cua = new AddUser_Admin();
-
             try {
                 dbConnect dbc = new dbConnect();
                 TableModel tbl = account_table.getModel();
                 ResultSet rs = dbc.getData("SELECT * FROM tbl_products WHERE p_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
                 if (rs.next()) {
-
                     PID.setText("" + rs.getString("p_id"));
                     Mname.setText("" + rs.getString("p_name"));
                     Price.setText("" + rs.getString("p_price"));
@@ -903,12 +823,90 @@ public class Addmovie extends javax.swing.JFrame {
                     addClickable = false;
                     ad.setForeground(red);
                 }
-
+                rs.close(); // Close the ResultSet here
             } catch (SQLException ex) {
                 System.out.println("" + ex);
             }
         }
+    }
+
+    public ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
+        ImageIcon MyImage = null;
+        if (ImagePath != null) {
+            MyImage = new ImageIcon(ImagePath);
+        } else {
+            MyImage = new ImageIcon(pic);
+        }
+
+        int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
+
+        java.awt.Image img = MyImage.getImage();
+        java.awt.Image newImg = img.getScaledInstance(label.getWidth(), newHeight, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
+
+    public void showMovieImage(String movieID) {
+        dbConnect dbc = new dbConnect();
+        java.sql.Connection con = dbc.getConnection(); // Get the connection
+        java.sql.PreparedStatement pstmt = null;
+        java.sql.ResultSet rs = null;
+        try {
+            String query = "SELECT p_image FROM tbl_products WHERE p_id = ?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, movieID);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                String imageName = rs.getString("p_image");
+                System.out.println("Retrieved imageName from DB: " + imageName);
+
+                if (imageName != null && !imageName.isEmpty()) {
+                    String fullImagePath = "src/userimages/" + imageName;
+                    System.out.println("Constructed fullImagePath: " + fullImagePath);
+
+                    File imageFile = new File(fullImagePath);
+                    if (!imageFile.exists()) {
+                        System.out.println("Image file NOT found at: " + fullImagePath);
+                    }
+
+                    ImageIcon icon = ResizeImage(fullImagePath, null, movieimage);
+                    movieimage.setIcon(icon);
+                } else {
+                    movieimage.setIcon(null); // No image to show
+                    System.out.println("ImageName is null or empty in the database.");
+                }
+            } else {
+                System.out.println("No product found with ID: " + movieID);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error fetching image: " + ex.getMessage());
+        } finally {
+            // Close resources in the finally block
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (con != null) con.close(); // Close the connection
+            } catch (SQLException e) {
+                System.out.println("Error closing resources: " + e.getMessage());
+            }
+        }
+    
+
+       
+
+
+       
+            
+        
     }//GEN-LAST:event_account_tableMouseClicked
+
+    
+
+           
+             
+       
+    
+
 
     private void add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add2MouseClicked
         addClickable = true;
@@ -1029,6 +1027,72 @@ public class Addmovie extends javax.swing.JFrame {
         add4.setBackground(d);
     }//GEN-LAST:event_add4MouseExited
 
+    private void PIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PIDActionPerformed
+
+    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusActionPerformed
+
+    private void MnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnameActionPerformed
+
+    private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PriceActionPerformed
+
+    private void SelectMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseExited
+        Select.setBackground(d);
+    }//GEN-LAST:event_SelectMouseExited
+
+    private void SelectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseEntered
+        Select.setBackground(h);
+    }//GEN-LAST:event_SelectMouseEntered
+
+    private void SelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseClicked
+        //         imageuploadjava.txt
+        JFileChooser fileChooser = new JFileChooser();
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            try {
+
+                selectedFile = fileChooser.getSelectedFile();
+                destination = "src/userimages/" + selectedFile.getName();
+                path = selectedFile.getAbsolutePath();
+
+                if (FileExistenceChecker(path) == 1) {
+                    JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
+                    destination = "";
+                    path = "";
+                } else {
+                    movieimage.setIcon(ResizeImage(path, null, movieimage));
+                    Select.setEnabled(false);
+                    Remove.setEnabled(true);
+                }
+            } catch (Exception ex) {
+                System.out.println("File Error!");
+            }
+        }
+    }//GEN-LAST:event_SelectMouseClicked
+
+    private void RemoveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseExited
+        Remove.setBackground(d);
+    }//GEN-LAST:event_RemoveMouseExited
+
+    private void RemoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseEntered
+        Remove.setBackground(h);
+    }//GEN-LAST:event_RemoveMouseEntered
+
+    private void RemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseClicked
+        Remove.setEnabled(false);
+        Select.setEnabled(true);
+        movieimage.setIcon(null);
+        destination = "";
+        path = "";
+    }//GEN-LAST:event_RemoveMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1074,11 +1138,11 @@ public class Addmovie extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Main;
-    public javax.swing.JTextField Mname;
-    public javax.swing.JTextField PID;
-    public javax.swing.JTextField Price;
-    public javax.swing.JPanel Remove;
-    public javax.swing.JPanel Select;
+    private javax.swing.JTextField Mname;
+    private javax.swing.JTextField PID;
+    private javax.swing.JTextField Price;
+    private javax.swing.JPanel Remove;
+    private javax.swing.JPanel Select;
     private javax.swing.JTable account_table;
     private javax.swing.JLabel ad;
     private javax.swing.JLabel ad1;
@@ -1087,7 +1151,6 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JPanel add2;
     private javax.swing.JPanel add3;
     private javax.swing.JPanel add4;
-    public javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -1100,6 +1163,7 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logout;
-    public javax.swing.JComboBox<String> status;
+    private javax.swing.JLabel movieimage;
+    private javax.swing.JComboBox<String> status;
     // End of variables declaration//GEN-END:variables
 }
