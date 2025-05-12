@@ -124,7 +124,7 @@ public class showMovies extends javax.swing.JFrame {
         jLabel1.setText("Showing Available Movies");
         Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, 40));
 
-        Showing_Movies.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 100));
+        Showing_Movies.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 90));
 
         showMovies_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,7 +136,7 @@ public class showMovies extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(showMovies_table);
 
-        Showing_Movies.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 680, 500));
+        Showing_Movies.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 680, 500));
 
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -154,9 +154,9 @@ public class showMovies extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Back");
-        cancel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 130, 70));
+        cancel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 130, 70));
 
-        Showing_Movies.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, 280, 180));
+        Showing_Movies.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 310, 300, 140));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

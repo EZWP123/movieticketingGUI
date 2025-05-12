@@ -120,11 +120,12 @@
         <Component class="javax.swing.JComboBox" name="sq">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
+              <StringArray count="5">
                 <StringItem index="0" value="what is ur nickname?"/>
                 <StringItem index="1" value="what is ur lastname"/>
                 <StringItem index="2" value="who is your favourite person?"/>
-                <StringItem index="3" value=" "/>
+                <StringItem index="3" value="who is ur favourite teacher?"/>
+                <StringItem index="4" value=" "/>
               </StringArray>
             </Property>
           </Properties>

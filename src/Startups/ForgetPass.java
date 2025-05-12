@@ -300,7 +300,7 @@ public class ForgetPass extends javax.swing.JFrame {
 
         Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 530, 90, 30));
 
-        sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "what is ur nickname?", "what is ur lastname", "who is your favourite person?", " " }));
+        sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "what is ur nickname?", "what is ur lastname", "who is your favourite person?", "who is ur favourite teacher?", " " }));
         Main.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 400, 30));
         Main.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 400, 30));
         Main.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 400, 30));
