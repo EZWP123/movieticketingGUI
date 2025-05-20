@@ -292,6 +292,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         cancel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -306,7 +307,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add User");
-        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 180, 40));
+        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 180, 40));
 
         refresh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -491,7 +492,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
         add.add(jLabel11);
         jLabel11.setBounds(0, 10, 90, 10);
 
-        New_Manager.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 90, 30));
+        New_Manager.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, 90, 30));
 
         update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -512,7 +513,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
         update.add(jLabel17);
         jLabel17.setBounds(0, 10, 90, 10);
 
-        New_Manager.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 620, 90, 30));
+        New_Manager.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 590, 90, 30));
 
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -533,7 +534,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
         delete.add(jLabel18);
         jLabel18.setBounds(0, 10, 90, 10);
 
-        New_Manager.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 620, 90, 30));
+        New_Manager.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 590, 90, 30));
 
         UID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         UID.setEnabled(false);
@@ -564,7 +565,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
         jPanel1.add(image);
         image.setBounds(10, 10, 190, 170);
 
-        New_Manager.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 210, 190));
+        New_Manager.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 210, 190));
 
         Remove.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -585,7 +586,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
         Remove.add(jLabel21);
         jLabel21.setBounds(0, 10, 90, 10);
 
-        New_Manager.add(Remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 90, 30));
+        New_Manager.add(Remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 90, 30));
 
         Select.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -606,7 +607,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
         Select.add(jLabel22);
         jLabel22.setBounds(0, 10, 90, 10);
 
-        New_Manager.add(Select, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 90, 30));
+        New_Manager.add(Select, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, 90, 30));
 
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -626,7 +627,10 @@ public class AddUser_Admin extends javax.swing.JFrame {
         jLabel10.setText("Cancel");
         cancel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 90, 10));
 
-        New_Manager.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, -1, 30));
+        New_Manager.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, -1, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3351971.jpg"))); // NOI18N
+        New_Manager.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 830, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1070,6 +1074,7 @@ public class AddUser_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;

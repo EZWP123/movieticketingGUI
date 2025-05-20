@@ -94,6 +94,7 @@ public class ChangePass extends javax.swing.JFrame {
         check3 = new javax.swing.JCheckBox();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -114,7 +115,7 @@ public class ChangePass extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Change Password");
-        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 890, 40));
+        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 890, 40));
 
         Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 100));
 
@@ -126,10 +127,12 @@ public class ChangePass extends javax.swing.JFrame {
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
         acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
-        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 30));
-        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 370, 390));
+        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 300, 30));
 
-        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 310, 560));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-wolf-pack-battalion-256.png"))); // NOI18N
+        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 240, 200));
+
+        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 310, 580));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,7 +152,7 @@ public class ChangePass extends javax.swing.JFrame {
                 CpasswordActionPerformed(evt);
             }
         });
-        Main.add(Cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, 330, 30));
+        Main.add(Cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, 340, 30));
 
         oldPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         oldPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +160,7 @@ public class ChangePass extends javax.swing.JFrame {
                 oldPasswordActionPerformed(evt);
             }
         });
-        Main.add(oldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 330, 30));
+        Main.add(oldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 340, 30));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,9 +195,9 @@ public class ChangePass extends javax.swing.JFrame {
                 newPasswordActionPerformed(evt);
             }
         });
-        Main.add(newPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 330, 30));
+        Main.add(newPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 340, 30));
 
-        check1.setBackground(new java.awt.Color(102, 102, 102));
+        check1.setBackground(new java.awt.Color(204, 0, 51));
         check1.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         check1.setForeground(new java.awt.Color(255, 255, 255));
         check1.setText("Show");
@@ -205,7 +208,7 @@ public class ChangePass extends javax.swing.JFrame {
         });
         Main.add(check1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 370, -1, -1));
 
-        check2.setBackground(new java.awt.Color(102, 102, 102));
+        check2.setBackground(new java.awt.Color(204, 0, 51));
         check2.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         check2.setForeground(new java.awt.Color(255, 255, 255));
         check2.setText("Show");
@@ -216,7 +219,7 @@ public class ChangePass extends javax.swing.JFrame {
         });
         Main.add(check2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 420, -1, -1));
 
-        check3.setBackground(new java.awt.Color(102, 102, 102));
+        check3.setBackground(new java.awt.Color(204, 0, 51));
         check3.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         check3.setForeground(new java.awt.Color(255, 255, 255));
         check3.setText("Show");
@@ -246,6 +249,9 @@ public class ChangePass extends javax.swing.JFrame {
         logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 10));
 
         Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, -1, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        Main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 10, 1090, 670));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -465,6 +471,7 @@ public class ChangePass extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel logout;
     private javax.swing.JPasswordField newPassword;

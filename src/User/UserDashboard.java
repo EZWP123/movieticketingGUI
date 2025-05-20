@@ -123,14 +123,20 @@ public class UserDashboard extends javax.swing.JFrame {
         acc_lname = new javax.swing.JLabel();
         acc_fname = new javax.swing.JLabel();
         acc_id = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         users = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         users1 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         users2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         users3 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -214,10 +220,14 @@ public class UserDashboard extends javax.swing.JFrame {
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
         acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
-        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 30));
+        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 300, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-wolf-pack-battalion-256.png"))); // NOI18N
+        Navigation.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 240, 200));
 
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 540));
 
+        users.setBackground(new java.awt.Color(255, 255, 255));
         users.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 usersMouseClicked(evt);
@@ -237,8 +247,14 @@ public class UserDashboard extends javax.swing.JFrame {
         users.add(jLabel15);
         jLabel15.setBounds(0, 90, 170, 30);
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-details-64.png"))); // NOI18N
+        users.add(jLabel2);
+        jLabel2.setBounds(40, 30, 80, 60);
+
         Main.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 170, 120));
 
+        users1.setBackground(new java.awt.Color(255, 255, 255));
         users1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 users1MouseClicked(evt);
@@ -254,12 +270,18 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Add Recovery");
+        jLabel16.setText("Recovery");
         users1.add(jLabel16);
         jLabel16.setBounds(0, 90, 170, 30);
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-add-key-50.png"))); // NOI18N
+        users1.add(jLabel4);
+        jLabel4.setBounds(40, 30, 80, 60);
+
         Main.add(users1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 170, 120));
 
+        users2.setBackground(new java.awt.Color(255, 255, 255));
         users2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 users2MouseClicked(evt);
@@ -279,8 +301,14 @@ public class UserDashboard extends javax.swing.JFrame {
         users2.add(jLabel17);
         jLabel17.setBounds(0, 90, 170, 30);
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-change-password-58.png"))); // NOI18N
+        users2.add(jLabel5);
+        jLabel5.setBounds(40, 30, 80, 60);
+
         Main.add(users2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 170, 120));
 
+        users3.setBackground(new java.awt.Color(255, 255, 255));
         users3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 users3MouseClicked(evt);
@@ -300,7 +328,15 @@ public class UserDashboard extends javax.swing.JFrame {
         users3.add(jLabel18);
         jLabel18.setBounds(0, 90, 170, 30);
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-purchase-50.png"))); // NOI18N
+        users3.add(jLabel6);
+        jLabel6.setBounds(40, 30, 80, 60);
+
         Main.add(users3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 170, 120));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 610, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -507,6 +543,12 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel users;
     private javax.swing.JPanel users1;

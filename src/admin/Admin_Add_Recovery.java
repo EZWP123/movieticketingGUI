@@ -126,6 +126,7 @@ public class Admin_Add_Recovery extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         Main = new javax.swing.JPanel();
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -138,11 +139,16 @@ public class Admin_Add_Recovery extends javax.swing.JFrame {
         acc_lname = new javax.swing.JLabel();
         acc_fname = new javax.swing.JLabel();
         acc_id = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         sq = new javax.swing.JComboBox<>();
         ans = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -195,13 +201,13 @@ public class Admin_Add_Recovery extends javax.swing.JFrame {
         acc_phone.setForeground(new java.awt.Color(255, 255, 255));
         acc_phone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_phone.setText("Phone");
-        Navigation.add(acc_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 300, 30));
+        Navigation.add(acc_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 300, 30));
 
         acc_type.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_type.setForeground(new java.awt.Color(255, 255, 255));
         acc_type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_type.setText("Type");
-        Navigation.add(acc_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 300, 30));
+        Navigation.add(acc_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 300, 30));
 
         acc_uname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_uname.setForeground(new java.awt.Color(255, 255, 255));
@@ -225,10 +231,18 @@ public class Admin_Add_Recovery extends javax.swing.JFrame {
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
         acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
-        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 30));
-        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -40, 380, 430));
+        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 300, 30));
 
-        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 310, 560));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/red_wolf_logo_200x200.png"))); // NOI18N
+        Navigation.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 240, 200));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        jLabel4.setText("jLabel3");
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Navigation.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 310, 640));
+
+        Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 310, 570));
 
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -249,11 +263,14 @@ public class Admin_Add_Recovery extends javax.swing.JFrame {
         confirm.add(jLabel11);
         jLabel11.setBounds(0, 10, 90, 10);
 
-        Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 90, 30));
+        Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 90, 30));
 
         sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "what is ur nickname?", "what is ur lastname", "who is your favourite person?", " " }));
-        Main.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 410, 30));
-        Main.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 410, 30));
+        Main.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 410, 30));
+        Main.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 410, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 660, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -439,6 +456,9 @@ public class Admin_Add_Recovery extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel logout;
     private javax.swing.JComboBox<String> sq;
     // End of variables declaration//GEN-END:variables

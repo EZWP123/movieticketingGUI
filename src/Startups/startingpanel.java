@@ -46,6 +46,8 @@ public class startingpanel extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         bar = new javax.swing.JProgressBar();
         progress = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -58,27 +60,33 @@ public class startingpanel extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText(" MOVIE TICKETING");
-        Main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 540, 60));
+        Main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 540, 60));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("TO");
-        Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 540, 60));
+        Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 540, 60));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("WELCOME");
-        Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 770, 60));
+        Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 770, 60));
         Main.add(bar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 394, 520, 20));
 
         progress.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         progress.setForeground(new java.awt.Color(255, 255, 255));
         progress.setText("0%");
         Main.add(progress, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 30, 20));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-wolf-pack-battalion-256.png"))); // NOI18N
+        Main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 240, 200));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        Main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-260, -160, 1090, 670));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,6 +163,8 @@ startingpanel stp = new startingpanel();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel progress;
     // End of variables declaration//GEN-END:variables
 }

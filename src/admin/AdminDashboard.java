@@ -81,6 +81,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         acc_phone = new javax.swing.JLabel();
         acc_id = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         users1 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         users = new javax.swing.JPanel();
@@ -94,6 +96,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -156,8 +159,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
         acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
-        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 30));
+        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 300, 30));
         Navigation.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -90, 310, 160));
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/red_wolf_logo_200x200.png"))); // NOI18N
+        Navigation.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 240, 200));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        Navigation.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 300, 640));
 
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 540));
 
@@ -180,7 +191,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users1.add(jLabel14);
         jLabel14.setBounds(0, 25, 160, 22);
 
-        Main.add(users1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 160, 70));
+        Main.add(users1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 160, 70));
 
         users.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -201,7 +212,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users.add(jLabel12);
         jLabel12.setBounds(0, 25, 160, 20);
 
-        Main.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 160, 70));
+        Main.add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 160, 70));
 
         users2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -222,7 +233,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users2.add(jLabel15);
         jLabel15.setBounds(0, 25, 160, 22);
 
-        Main.add(users2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, 160, 70));
+        Main.add(users2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 360, 160, 70));
 
         users3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -249,7 +260,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users3.add(jLabel17);
         jLabel17.setBounds(0, 40, 160, 22);
 
-        Main.add(users3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 160, 70));
+        Main.add(users3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, 160, 70));
 
         users4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -270,7 +281,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         users4.add(jLabel18);
         jLabel18.setBounds(0, 25, 160, 22);
 
-        Main.add(users4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 160, 70));
+        Main.add(users4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 160, 70));
 
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -291,7 +302,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         logout.add(jLabel10);
         jLabel10.setBounds(40, 20, 80, 30);
 
-        Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 160, 70));
+        Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 500, 160, 70));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 550, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -485,6 +499,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel users;
     private javax.swing.JPanel users1;

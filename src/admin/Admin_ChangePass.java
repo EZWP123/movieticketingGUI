@@ -95,6 +95,7 @@ public class Admin_ChangePass extends javax.swing.JFrame {
         check3 = new javax.swing.JCheckBox();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,7 +112,7 @@ public class Admin_ChangePass extends javax.swing.JFrame {
         jLabel1.setText("Change Password");
         Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 900, 40));
 
-        Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 100));
+        Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 100));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,7 +167,7 @@ public class Admin_ChangePass extends javax.swing.JFrame {
         confirm.add(jLabel11);
         jLabel11.setBounds(0, 7, 90, 17);
 
-        Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 90, 30));
+        Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 90, 30));
 
         newPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -228,6 +229,9 @@ public class Admin_ChangePass extends javax.swing.JFrame {
         logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
 
         Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, -1, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 910, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -447,6 +451,7 @@ public class Admin_ChangePass extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;

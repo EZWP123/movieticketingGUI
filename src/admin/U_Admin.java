@@ -281,7 +281,7 @@ public class U_Admin extends javax.swing.JFrame {
         Navigation = new javax.swing.JPanel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         account_table = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -333,8 +333,11 @@ public class U_Admin extends javax.swing.JFrame {
         jLabel10.setText("Back");
         logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
 
-        Navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 493, 130, 40));
-        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 310, 140));
+        Navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 130, 40));
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/red_wolf_logo_200x200.png"))); // NOI18N
+        Navigation.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 200));
 
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 300, 520));
 
@@ -425,7 +428,7 @@ public class U_Admin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
         );
 
         pack();
@@ -595,7 +598,7 @@ public class U_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel logout;

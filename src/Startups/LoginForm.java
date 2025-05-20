@@ -143,6 +143,8 @@ public class LoginForm extends javax.swing.JFrame {
         check = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,25 +152,29 @@ public class LoginForm extends javax.swing.JFrame {
         Manager_Login1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         Manager_Login1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        passwordML.setBackground(new java.awt.Color(103, 10, 10));
+        passwordML.setBackground(new java.awt.Color(204, 0, 51));
+        passwordML.setForeground(new java.awt.Color(255, 255, 255));
         passwordML.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        passwordML.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        passwordML.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        passwordML.setCaretColor(new java.awt.Color(255, 255, 255));
         passwordML.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordMLActionPerformed(evt);
             }
         });
-        Manager_Login1.add(passwordML, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 290, 50));
+        Manager_Login1.add(passwordML, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 300, 50));
 
-        usernameML.setBackground(new java.awt.Color(103, 10, 10));
+        usernameML.setBackground(new java.awt.Color(204, 0, 51));
+        usernameML.setForeground(new java.awt.Color(255, 255, 255));
         usernameML.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        usernameML.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Username:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        usernameML.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Username:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        usernameML.setCaretColor(new java.awt.Color(255, 255, 255));
         usernameML.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameMLActionPerformed(evt);
             }
         });
-        Manager_Login1.add(usernameML, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 290, 50));
+        Manager_Login1.add(usernameML, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 300, 50));
 
         confirm1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,7 +200,7 @@ public class LoginForm extends javax.swing.JFrame {
         confirm1.add(MR_clickhere);
         MR_clickhere.setBounds(0, 10, 100, 20);
 
-        Manager_Login1.add(confirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 100, 40));
+        Manager_Login1.add(confirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 100, 40));
 
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -215,7 +221,7 @@ public class LoginForm extends javax.swing.JFrame {
         confirm.add(jLabel5);
         jLabel5.setBounds(0, 10, 100, 20);
 
-        Manager_Login1.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 100, 40));
+        Manager_Login1.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, 100, 40));
 
         MR_clickhere1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         MR_clickhere1.setForeground(new java.awt.Color(255, 255, 255));
@@ -226,9 +232,9 @@ public class LoginForm extends javax.swing.JFrame {
                 MR_clickhere1MouseClicked(evt);
             }
         });
-        Manager_Login1.add(MR_clickhere1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 330, 20));
+        Manager_Login1.add(MR_clickhere1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 330, 20));
 
-        check.setBackground(new java.awt.Color(103, 10, 10));
+        check.setBackground(new java.awt.Color(204, 0, 51));
         check.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         check.setForeground(new java.awt.Color(255, 255, 255));
         check.setText("Show");
@@ -237,13 +243,13 @@ public class LoginForm extends javax.swing.JFrame {
                 checkActionPerformed(evt);
             }
         });
-        Manager_Login1.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, -1, -1));
+        Manager_Login1.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("SIGN IN");
-        Manager_Login1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 220, -1));
+        Manager_Login1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 220, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,19 +259,25 @@ public class LoginForm extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        Manager_Login1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 260, -1));
+        Manager_Login1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, 260, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-wolf-pack-battalion-256.png"))); // NOI18N
+        Manager_Login1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 240, 200));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3351971.jpg"))); // NOI18N
+        Manager_Login1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -160, 890, 890));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Manager_Login1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+            .addComponent(Manager_Login1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(Manager_Login1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Manager_Login1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -443,7 +455,9 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPanel confirm;
     private javax.swing.JPanel confirm1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField passwordML;
     private javax.swing.JTextField usernameML;

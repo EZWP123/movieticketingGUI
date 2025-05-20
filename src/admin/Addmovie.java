@@ -438,6 +438,7 @@ public class Addmovie extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -683,6 +684,9 @@ public class Addmovie extends javax.swing.JFrame {
         logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
 
         Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, -1, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 620, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1138,11 +1142,11 @@ public class Addmovie extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Main;
-    private javax.swing.JTextField Mname;
-    private javax.swing.JTextField PID;
-    private javax.swing.JTextField Price;
-    private javax.swing.JPanel Remove;
-    private javax.swing.JPanel Select;
+    public javax.swing.JTextField Mname;
+    public javax.swing.JTextField PID;
+    public javax.swing.JTextField Price;
+    public javax.swing.JPanel Remove;
+    public javax.swing.JPanel Select;
     private javax.swing.JTable account_table;
     private javax.swing.JLabel ad;
     private javax.swing.JLabel ad1;
@@ -1154,6 +1158,7 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1163,7 +1168,7 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logout;
-    private javax.swing.JLabel movieimage;
-    private javax.swing.JComboBox<String> status;
+    public javax.swing.JLabel movieimage;
+    public javax.swing.JComboBox<String> status;
     // End of variables declaration//GEN-END:variables
 }

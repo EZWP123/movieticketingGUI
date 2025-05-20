@@ -137,11 +137,12 @@ public class User_AddRecovery extends javax.swing.JFrame {
         acc_lname = new javax.swing.JLabel();
         acc_fname = new javax.swing.JLabel();
         acc_id = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         sq = new javax.swing.JComboBox<>();
         ans = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -194,7 +195,7 @@ public class User_AddRecovery extends javax.swing.JFrame {
         acc_phone.setForeground(new java.awt.Color(255, 255, 255));
         acc_phone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_phone.setText("Phone");
-        Navigation.add(acc_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 300, 30));
+        Navigation.add(acc_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 300, 30));
 
         acc_type.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_type.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,26 +207,28 @@ public class User_AddRecovery extends javax.swing.JFrame {
         acc_uname.setForeground(new java.awt.Color(255, 255, 255));
         acc_uname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_uname.setText("User Name");
-        Navigation.add(acc_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 300, 30));
+        Navigation.add(acc_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 300, 30));
 
         acc_lname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_lname.setForeground(new java.awt.Color(255, 255, 255));
         acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_lname.setText("Last Name");
-        Navigation.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 300, 30));
+        Navigation.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 300, 30));
 
         acc_fname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_fname.setForeground(new java.awt.Color(255, 255, 255));
         acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_fname.setText("First Name");
-        Navigation.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 300, 30));
+        Navigation.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 300, 30));
 
         acc_id.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
         acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
-        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 300, 30));
-        Navigation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -40, 380, 430));
+        Navigation.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 300, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-wolf-pack-battalion-256.png"))); // NOI18N
+        Navigation.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 240, 200));
 
         Main.add(Navigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 310, 560));
 
@@ -248,11 +251,14 @@ public class User_AddRecovery extends javax.swing.JFrame {
         confirm.add(jLabel11);
         jLabel11.setBounds(0, 10, 90, 10);
 
-        Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 540, 90, 30));
+        Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 90, 30));
 
         sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's the name of your first pet?", "What's the lastname of your Mother?", "What's your favorite food?", "What's your favorite Color?", "What's your birth month?" }));
-        Main.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 410, 30));
-        Main.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 410, 30));
+        Main.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 410, 30));
+        Main.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 410, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
+        Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 830, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -262,7 +268,7 @@ public class User_AddRecovery extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -429,7 +435,8 @@ public class User_AddRecovery extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel logout;
     private javax.swing.JComboBox<String> sq;
     // End of variables declaration//GEN-END:variables

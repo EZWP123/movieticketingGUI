@@ -256,6 +256,7 @@ public class ForgetPass extends javax.swing.JFrame {
         check1 = new javax.swing.JCheckBox();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -274,7 +275,7 @@ public class ForgetPass extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Account Details");
+        jLabel1.setText("Reset Password");
         Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 930, 40));
 
         Main.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 100));
@@ -296,14 +297,24 @@ public class ForgetPass extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Confirm");
         confirm.add(jLabel11);
-        jLabel11.setBounds(0, 10, 90, 10);
+        jLabel11.setBounds(10, 20, 90, 10);
 
-        Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 530, 90, 30));
+        Main.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 590, 100, 50));
 
         sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "what is ur nickname?", "what is ur lastname", "who is your favourite person?", "who is ur favourite teacher?", " " }));
-        Main.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 400, 30));
-        Main.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 400, 30));
-        Main.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 400, 30));
+        sq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        sq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sqActionPerformed(evt);
+            }
+        });
+        Main.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 410, 40));
+
+        ans.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Main.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 410, 40));
+
+        un.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Main.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 410, 40));
 
         acc_id1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_id1.setForeground(new java.awt.Color(255, 255, 255));
@@ -330,7 +341,7 @@ public class ForgetPass extends javax.swing.JFrame {
         confirm1.add(jLabel12);
         jLabel12.setBounds(0, 10, 90, 10);
 
-        Main.add(confirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 90, 30));
+        Main.add(confirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 90, 30));
 
         acc_id2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_id2.setForeground(new java.awt.Color(255, 255, 255));
@@ -338,19 +349,21 @@ public class ForgetPass extends javax.swing.JFrame {
         acc_id2.setText("Enter New Password:");
         Main.add(acc_id2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 200, 30));
 
+        Newpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         Newpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NewpassActionPerformed(evt);
             }
         });
-        Main.add(Newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 400, 30));
+        Main.add(Newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 410, 40));
 
+        Cpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         Cpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CpassActionPerformed(evt);
             }
         });
-        Main.add(Cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 400, 30));
+        Main.add(Cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 410, 40));
 
         acc_id3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         acc_id3.setForeground(new java.awt.Color(255, 255, 255));
@@ -358,7 +371,7 @@ public class ForgetPass extends javax.swing.JFrame {
         acc_id3.setText("Confirm Password:");
         Main.add(acc_id3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 180, 30));
 
-        check.setBackground(new java.awt.Color(103, 10, 10));
+        check.setBackground(new java.awt.Color(204, 0, 51));
         check.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         check.setForeground(new java.awt.Color(255, 255, 255));
         check.setText("Show");
@@ -369,7 +382,7 @@ public class ForgetPass extends javax.swing.JFrame {
         });
         Main.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, -1, 30));
 
-        check1.setBackground(new java.awt.Color(103, 10, 10));
+        check1.setBackground(new java.awt.Color(204, 0, 51));
         check1.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         check1.setForeground(new java.awt.Color(255, 255, 255));
         check1.setText("Show");
@@ -396,9 +409,12 @@ public class ForgetPass extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Back");
-        logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
+        logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 13, 130, 20));
 
-        Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, -1, 40));
+        Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 130, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3351971.jpg"))); // NOI18N
+        Main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -480, 1210, 1150));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -597,6 +613,10 @@ public class ForgetPass extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_check1ActionPerformed
 
+    private void sqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sqActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -664,6 +684,7 @@ public class ForgetPass extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel logout;
     private javax.swing.JComboBox<String> sq;
     private javax.swing.JTextField un;
