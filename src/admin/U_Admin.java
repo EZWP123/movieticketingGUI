@@ -349,6 +349,11 @@ public class U_Admin extends javax.swing.JFrame {
 
             }
         ));
+        account_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                account_tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(account_table);
 
         Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 800, 430));
@@ -548,6 +553,10 @@ public class U_Admin extends javax.swing.JFrame {
     private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
         delete.setBackground(d);
     }//GEN-LAST:event_deleteMouseExited
+
+    private void account_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_account_tableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_account_tableMouseClicked
 
     /**
      * @param args the command line arguments

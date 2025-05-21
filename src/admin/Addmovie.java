@@ -818,12 +818,18 @@ public class Addmovie extends javax.swing.JFrame {
             try {
                 dbConnect dbc = new dbConnect();
                 TableModel tbl = account_table.getModel();
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_products WHERE p_id = '" + tbl.getValueAt(rowIndex, 0) + "'");
+               String selectedID = tbl.getValueAt(rowIndex, 0).toString(); // Get the movie ID
+            ResultSet rs = dbc.getData("SELECT * FROM tbl_products WHERE p_id = '" + selectedID + "'");
                 if (rs.next()) {
                     PID.setText("" + rs.getString("p_id"));
                     Mname.setText("" + rs.getString("p_name"));
                     Price.setText("" + rs.getString("p_price"));
                     status.setSelectedItem("" + rs.getString("p_status"));
+                    
+                    
+                    
+                      showMovieImage(selectedID); 
+                     
                     addClickable = false;
                     ad.setForeground(red);
                 }
@@ -865,7 +871,7 @@ public class Addmovie extends javax.swing.JFrame {
                 System.out.println("Retrieved imageName from DB: " + imageName);
 
                 if (imageName != null && !imageName.isEmpty()) {
-                    String fullImagePath = "src/userimages/" + imageName;
+                   String fullImagePath = imageName; // Use the image name directly as it already has the full path
                     System.out.println("Constructed fullImagePath: " + fullImagePath);
 
                     File imageFile = new File(fullImagePath);

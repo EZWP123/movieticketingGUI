@@ -709,108 +709,144 @@ if (rs2.next()) {
     }//GEN-LAST:event_logoutMouseExited
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-       
-            dbConnect dbc = new dbConnect();
-            Session sess = Session.getInstance();
-            dbConnect connector = new dbConnect();
-            int userId = 0;
-            int d_qnty = 0;
-            int minusQnty = 0;
-            String uname2 = null;
-            String mn = Mname.getText().trim();
-            String pr = Price.getText().trim();
-            String pid = PID.getText().trim();
-            int q = Integer.parseInt(Qnty.getText().trim());
-            Timestamp time = new Timestamp(new java.util.Date().getTime());
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String date = sdf.format(new java.util.Date());
-            String py = Payment.getText().trim();
-            int price = Integer.parseInt(Price.getText().trim());
-            int payment = Integer.parseInt(Payment.getText().trim());
 
+    dbConnect dbc = new dbConnect();
+    Session sess = Session.getInstance();
+    dbConnect connector = new dbConnect(); // Assuming this is for selects, and dbc for updates/inserts
 
+    // 1. Get input values from text fields
+    String movieName = Mname.getText().trim();
+    String priceStr = Price.getText().trim();
+    String productId = PID.getText().trim();
+    String quantityStr = Qnty.getText().trim();
+    String paymentStr = Payment.getText().trim();
 
-            if (mn.isEmpty() || pr.isEmpty() || Qnty.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please Fill All Boxes");
+    // Variables to hold parsed integer values and database results
+    int quantity = 0;
+    int unitPrice = 0; // Price per item
+    int amountPaid = 0; // Amount customer entered
+    int userId = sess.getUid();
+    String username = null; // For logging purposes
 
-            } else if (!Qnty.getText().matches("\\d+")) 
-            {
-                JOptionPane.showMessageDialog(null, "Quantity Must Only Contain Numbers");
-            }else if (!py.matches("\\d+")) 
-            {
-                JOptionPane.showMessageDialog(null, "Payment Must Only Contain Numbers");
-            }else if (price > payment) 
-            {
-                JOptionPane.showMessageDialog(null, "insufficient Cash");
-            }else {
-//                try {
-                    
-                    try {
-                        String query2 = "SELECT * FROM tbl_accounts WHERE u_id = '" + sess.getUid() + "'";
-                        PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
+    // Get current timestamp for the transaction date
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String transactionDate = sdf.format(new java.util.Date());
 
-                        ResultSet resultSet = pstmt.executeQuery();
+    // --- 2. Input Validations (Improved for robustness) ---
+    if (movieName.isEmpty() || priceStr.isEmpty() || quantityStr.isEmpty() || paymentStr.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please Fill All Boxes");
+        return;
+    }
 
-                        if (resultSet.next()) {
-                            userId = resultSet.getInt("u_id");   // Update the outer `userId` correctly
-                            
+    try {
+        quantity = Integer.parseInt(quantityStr);
+        unitPrice = Integer.parseInt(priceStr);
+        amountPaid = Integer.parseInt(paymentStr);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Quantity, Price to Pay, and Enter Payment must be valid numbers.");
+        return;
+    }
+
+    // Calculate the total order price before checking for insufficient cash
+    int totalOrderPrice = unitPrice * quantity;
+
+    if (totalOrderPrice > amountPaid) {
+        JOptionPane.showMessageDialog(null, "Insufficient Cash. Total price for " + quantity + " items is " + totalOrderPrice + ", but payment is " + amountPaid + ".");
+        return;
+    }
+
+    // --- 3. Database Operations (if all validations pass) ---
+    try {
+        // a. Get User ID and Username from tbl_accounts
+        String userQuery = "SELECT u_id, u_username FROM tbl_accounts WHERE u_id = ?";
+        try (PreparedStatement pstmtUser = connector.getConnection().prepareStatement(userQuery)) {
+            pstmtUser.setInt(1, sess.getUid());
+            try (ResultSet rsUser = pstmtUser.executeQuery()) {
+                if (rsUser.next()) {
+                    userId = rsUser.getInt("u_id");
+                    username = rsUser.getString("u_username");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error: Current user not found in database.");
+                    return;
+                }
+            }
+        }
+
+        // b. Insert order into tbl_orders
+        String insertOrderSql = "INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, o_total) VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmtInsertOrder = dbc.getConnection().prepareStatement(insertOrderSql)) {
+            pstmtInsertOrder.setInt(1, userId);
+            pstmtInsertOrder.setString(2, productId);
+            pstmtInsertOrder.setInt(3, quantity);
+            pstmtInsertOrder.setString(4, transactionDate);
+            pstmtInsertOrder.setString(5, "Successful");
+            pstmtInsertOrder.setInt(6, totalOrderPrice); // Store the calculated total price in o_total
+
+            int rowsAffected = pstmtInsertOrder.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // c. Update product quantity in tbl_products
+                int currentProductQuantity = 0;
+                String productQuantityQuery = "SELECT p_quantity FROM tbl_products WHERE p_id = ?";
+                try (PreparedStatement pstmtProductQnty = connector.getConnection().prepareStatement(productQuantityQuery)) {
+                    pstmtProductQnty.setString(1, productId);
+                    try (ResultSet rsProductQnty = pstmtProductQnty.executeQuery()) {
+                        if (rsProductQnty.next()) {
+                            currentProductQuantity = rsProductQnty.getInt("p_quantity");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error: Product (MovieID) not found in stock.");
+                            return;
                         }
-                    } catch (SQLException ex) {
-                        System.out.println("SQL Exception: " + ex);
                     }
-                    
-                    
-                    
-                    
-                    if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, o_total) " //change to insert orders table
-                            + "VALUES ('" + userId + "', '" + pid + "', '" + q + "', '" + date + "', 'Succesful', '" + py + "')")) {
+                }
 
-                        
-                        
-                        try {
-                            String query2 = "SELECT * FROM tbl_products WHERE p_id = '" + pid + "'";
-                            System.out.println("pid: "+pid);
-                            PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
+                int newProductQuantity = currentProductQuantity - quantity;
+                if (newProductQuantity < 0) {
+                    JOptionPane.showMessageDialog(null, "Insufficient stock. Only " + currentProductQuantity + " available for " + movieName + ".");
+                    return;
+                }
 
-                            ResultSet resultSet = pstmt.executeQuery();
+                String updateProductSql = "UPDATE tbl_products SET p_quantity = ? WHERE p_id = ?";
+                try (PreparedStatement pstmtUpdateProduct = dbc.getConnection().prepareStatement(updateProductSql)) {
+                    pstmtUpdateProduct.setInt(1, newProductQuantity);
+                    pstmtUpdateProduct.setString(2, productId);
+                    pstmtUpdateProduct.executeUpdate();
+                }
 
-                            if (resultSet.next()) 
-                            {
-                                d_qnty = resultSet.getInt("p_quantity");  
-                                minusQnty = d_qnty - q;
-                                dbc.updateData("UPDATE tbl_products SET p_quantity = '" + minusQnty + "' WHERE p_id = '" + pid + "'");
-                                System.out.println("minusQnty: "+minusQnty+" pid:"+pid);
-                            }
-                        } catch (SQLException ex) {
-                            System.out.println("SQL Exception: " + ex);
-                        }
-                        
-                        
-                        
-                        
-                        try {
-                            String query2 = "SELECT * FROM tbl_accounts WHERE u_id = '" + sess.getUid() + "'";
-                            PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
+                // d. Log the transaction event
+                logEvent(userId, username, "User made transaction for Movie: " + movieName + " (ID: " + productId + ")");
 
-                            ResultSet resultSet = pstmt.executeQuery();
+                JOptionPane.showMessageDialog(null, "Order added successfully!");
 
-                            if (resultSet.next()) {
-                                userId = resultSet.getInt("u_id");   // Update the outer `userId` correctly
-                                uname2 = resultSet.getString("u_username");
-                            }
-                        } catch (SQLException ex) {
-                            System.out.println("SQL Exception: " + ex);
-                        }
+                // --- 4. Create and Show Transactionticket with all details ---
+                // IMPORTANT: Pass the 'totalOrderPrice' which is (unitPrice * quantity)
+                Transactionticket tt = new Transactionticket(
+                    userId,             // UID
+                    movieName,          // Movie Name
+                    quantity,           // Quantity
+                    totalOrderPrice,    // Calculated Total Price
+                    amountPaid,         // Amount Paid
+                    transactionDate     // Date
+                );
+                tt.setVisible(true);
+                this.dispose(); // Close the Orders Form
+            } else {
+                JOptionPane.showMessageDialog(null, "An error occurred while inserting the order.");
+            }
+        }
 
-                        logEvent(userId, uname2, "User made transaction ID: " + mn);
+    } catch (SQLException ex) {
+        System.err.println("SQL Exception: " + ex.getMessage());
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Database error: " + ex.getMessage());
+    } catch (Exception ex) {
+        System.err.println("An unexpected error occurred: " + ex.getMessage());
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(null, "An unexpected error occurred: " + ex.getMessage());
+    
 
-                        JOptionPane.showMessageDialog(null, "Added succesfully!");
-                        Transactionticket tt = new Transactionticket();
-                        tt.setVisible(true);
-                        this.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "An error occured");
-//                        System.out.println("Dan, Error occured in line: 710, OrderForm");
+    
+
                         UserDashboard ed = new UserDashboard();
                         ed.setVisible(true);
                         this.dispose();
@@ -819,7 +855,7 @@ if (rs2.next()) {
 //                } catch (SQLException ex) {
 //                    System.out.println("" + ex);
 //                }
-            }
+            
         
     }//GEN-LAST:event_addMouseClicked
 

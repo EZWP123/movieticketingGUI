@@ -6,22 +6,59 @@
 package Processes;
 
 import Startups.startingpanel;
-
+import config.PanelPrinter;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 /**
  *
 
  */
 public class Transactionticket extends javax.swing.JFrame {
 
+   
+    
     /**
      * Creates new form purchaseTickets
      */
     public Transactionticket() {
+        
+        
         initComponents();
         this.setResizable(false);
-        
-    }
+                this.setLocationRelativeTo(null); // Center the frame
 
+    }
+  // In your Transactionticket.java file
+
+public Transactionticket(
+    int userIdFromOrder,
+    String movieNameFromOrder,
+    int quantityFromOrder,
+    int totalOrderPriceFromOrder, // This is the calculated total price from OrdersForm
+    int paymentGivenFromOrder,    // Renamed from amountPaidFromOrder for consistency with your variable in the image
+    String dateFromOrder
+) {
+    initComponents(); // IMPORTANT: Always call this first to initialize all GUI components!
+
+    this.setResizable(false);
+    this.setLocationRelativeTo(null);
+
+    // Calculate the change. Ensure lblChange is a JLabel in your design.
+    int calculatedChange = paymentGivenFromOrder - totalOrderPriceFromOrder;
+
+    // Set the text for your JLabels using the received parameters and calculated values.
+    // Make sure these JLabel variable names match those in your GUI designer.
+    // These are the JLabels on your "Purchasing Tickets" form.
+
+    lblUid.setText("UID: " + userIdFromOrder);
+    lblMovieName.setText("Movie Name: " + movieNameFromOrder);
+    lblQuantity.setText("Quantity: " + quantityFromOrder);
+    lblTotalPrice.setText("Total Price: " + totalOrderPriceFromOrder);
+    lblPaymentGiven.setText("Amount Paid: " + paymentGivenFromOrder); // Assumes lblPaymentGiven exists
+    lblDate.setText("Date: " + dateFromOrder);
+    // Add this line if you have a JLabel named 'lblChange' in your Transactionticket form:
+    // lblChange.setText("Change: " + calculatedChange);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,17 +72,20 @@ public class Transactionticket extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         purchaseCancel = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        Remove = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        movieimage = new javax.swing.JLabel();
-        Select = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        Mname = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        Price = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        page = new javax.swing.JPanel();
+        lblUid = new javax.swing.JLabel();
+        lblMovieName = new javax.swing.JLabel();
+        PID = new javax.swing.JLabel();
+        Mname = new javax.swing.JLabel();
+        lblQuantity = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lblTotalPrice = new javax.swing.JLabel();
+        lblPaymentGiven = new javax.swing.JLabel();
+        Price = new javax.swing.JLabel();
+        Qnty = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
+        Payment = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,121 +114,135 @@ public class Transactionticket extends javax.swing.JFrame {
         });
         purchasing.add(purchaseCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 870, 90, 30));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        page.setBackground(new java.awt.Color(153, 153, 153));
 
-        Remove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RemoveMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                RemoveMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                RemoveMouseExited(evt);
-            }
-        });
-        Remove.setLayout(null);
+        lblUid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblUid.setForeground(new java.awt.Color(255, 255, 255));
+        lblUid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUid.setText("UID");
 
-        jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Remove");
-        Remove.add(jLabel21);
-        jLabel21.setBounds(0, 10, 90, 10);
+        lblMovieName.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblMovieName.setForeground(new java.awt.Color(255, 255, 255));
+        lblMovieName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMovieName.setText("Movie Name:");
 
-        jPanel2.setLayout(null);
-        jPanel2.add(movieimage);
-        movieimage.setBounds(10, 10, 190, 170);
+        lblQuantity.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblQuantity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQuantity.setText("Quantity");
 
-        Select.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SelectMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SelectMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SelectMouseExited(evt);
-            }
-        });
-        Select.setLayout(null);
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("date");
 
-        jLabel22.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("Select");
-        Select.add(jLabel22);
-        jLabel22.setBounds(0, 10, 90, 10);
+        lblTotalPrice.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblTotalPrice.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalPrice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalPrice.setText("total price");
 
-        Mname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Mname.addActionListener(new java.awt.event.ActionListener() {
+        lblPaymentGiven.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblPaymentGiven.setForeground(new java.awt.Color(255, 255, 255));
+        lblPaymentGiven.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPaymentGiven.setText("amount paid");
+
+        jButton1.setText("Print");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnameActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Price:");
-
-        Price.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Price.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PriceActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Movie Name:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Select, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(Mname, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 30, Short.MAX_VALUE))
+        javax.swing.GroupLayout pageLayout = new javax.swing.GroupLayout(page);
+        page.setLayout(pageLayout);
+        pageLayout.setHorizontalGroup(
+            pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pageLayout.createSequentialGroup()
+                .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pageLayout.createSequentialGroup()
+                        .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblMovieName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pageLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(lblUid, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pageLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pageLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(PID, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pageLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pageLayout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(Mname, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pageLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pageLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblPaymentGiven, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(lblTotalPrice, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(22, 22, 22))
+            .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pageLayout.createSequentialGroup()
+                    .addGap(136, 136, 136)
+                    .addComponent(Qnty, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(233, Short.MAX_VALUE)))
+            .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pageLayout.createSequentialGroup()
+                    .addGap(146, 146, 146)
+                    .addComponent(Payment, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(223, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Select, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Mname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pageLayout.setVerticalGroup(
+            pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pageLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jButton1)
+                .addGap(340, 340, 340)
+                .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PID, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMovieName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Mname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addComponent(lblQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblPaymentGiven, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
+            .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageLayout.createSequentialGroup()
+                    .addContainerGap(555, Short.MAX_VALUE)
+                    .addComponent(Qnty, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(155, 155, 155)))
+            .addGroup(pageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageLayout.createSequentialGroup()
+                    .addContainerGap(641, Short.MAX_VALUE)
+                    .addComponent(Payment, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(69, 69, 69)))
         );
 
-        purchasing.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 480, 740));
+        purchasing.add(page, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 480, 740));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,37 +263,11 @@ public class Transactionticket extends javax.swing.JFrame {
  
     }//GEN-LAST:event_purchaseCancelActionPerformed
 
-    private void RemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseClicked
-    
-    }//GEN-LAST:event_RemoveMouseClicked
-
-    private void RemoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseEntered
-     
-    }//GEN-LAST:event_RemoveMouseEntered
-
-    private void RemoveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RemoveMouseExited
-       
-    }//GEN-LAST:event_RemoveMouseExited
-
-    private void SelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseClicked
-
-    }//GEN-LAST:event_SelectMouseClicked
-
-    private void SelectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseEntered
-      
-    }//GEN-LAST:event_SelectMouseEntered
-
-    private void SelectMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectMouseExited
-    
-    }//GEN-LAST:event_SelectMouseExited
-
-    private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PriceActionPerformed
-
-    private void MnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MnameActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+JPanel myPanel = new JPanel();     
+PanelPrinter pPrint = new PanelPrinter(page);
+pPrint.printPanel();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,18 +307,21 @@ public class Transactionticket extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
-    public javax.swing.JTextField Mname;
-    public javax.swing.JTextField Price;
-    public javax.swing.JPanel Remove;
-    public javax.swing.JPanel Select;
+    private javax.swing.JLabel Mname;
+    private javax.swing.JLabel PID;
+    private javax.swing.JLabel Payment;
+    private javax.swing.JLabel Price;
+    private javax.swing.JLabel Qnty;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    public javax.swing.JLabel movieimage;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblMovieName;
+    private javax.swing.JLabel lblPaymentGiven;
+    private javax.swing.JLabel lblQuantity;
+    private javax.swing.JLabel lblTotalPrice;
+    private javax.swing.JLabel lblUid;
+    private javax.swing.JPanel page;
     private javax.swing.JButton purchaseCancel;
     private javax.swing.JPanel purchasing;
     // End of variables declaration//GEN-END:variables
