@@ -692,11 +692,12 @@ if (rs2.next()) {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
-        AdminDashboard as = new AdminDashboard();
-        as.setVisible(true);
+       UserDashboard ud = new UserDashboard();
+        ud.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutMouseClicked
 
