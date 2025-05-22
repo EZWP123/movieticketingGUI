@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2025 at 09:49 AM
+-- Generation Time: May 22, 2025 at 03:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,7 +64,7 @@ INSERT INTO `tbl_accounts` (`u_id`, `u_fname`, `u_lname`, `u_username`, `u_type`
 (45, 'qwe', 'qwe', 'ewq', 'Admin', 'PMhJJ5uimLWHo0yrrv/F7LOgRLv5fFFvq37enRr3fPo=', '0912312332123', '', 'Deleted', 'What\'s your favorite food?', 'hehe'),
 (46, 'qwewq', 'www', 'ewqewq', 'Admin', 'vQ69B04phIJ00eAyYsFtB9k6LdMu+kHKW67IKzpes5s=', '09845634552', '', 'Active', '', ''),
 (47, 'ewqwe', 'qwew', 'www', 'Admin', 'DR6kwlbNUKKnzL/SKz2ZWfb9ML2EC5/zx8Ze5OId8G0=', '091231232023', '', 'Active', '', ''),
-(48, 'jodee', 'somera', 'JD', 'Employee', 'pmmZhIL+7CygxdWjEwDJvndrTd5K2Vsc4vNBteMr74M=', '09121232321', '', 'Active', '', '');
+(48, 'jodee', 'somera', 'JD', 'Admin', 'pmmZhIL+7CygxdWjEwDJvndrTd5K2Vsc4vNBteMr74M=', '09121232321', '', 'Active', '', '');
 
 -- --------------------------------------------------------
 
@@ -243,7 +243,21 @@ INSERT INTO `tbl_logs` (`log_id`, `u_id`, `u_username`, `action_time`, `log_acti
 (338, 47, 'www', '2025-05-02 07:17:26', 'Admin Deleted Account: www'),
 (339, 47, 'www', '2025-05-02 07:28:59', 'Admin Deleted Account: www'),
 (340, 48, 'JD', '2025-05-02 07:39:59', 'Registered for the first time'),
-(341, 48, 'JD', '2025-05-02 07:40:20', 'Logged as Employee');
+(341, 48, 'JD', '2025-05-02 07:40:20', 'Logged as Employee'),
+(342, 48, 'jd', '2025-05-22 00:49:01', 'Logged as Employee'),
+(343, 48, 'JD', '2025-05-22 00:51:41', 'Logged Out'),
+(344, 48, 'jd', '2025-05-22 00:51:47', 'Logged as Employee'),
+(345, 48, 'JD', '2025-05-22 00:51:56', 'Logged Out'),
+(346, 48, 'jd', '2025-05-22 00:52:00', 'Logged as Admin'),
+(347, 48, 'JD', '2025-05-22 00:53:08', 'Admin Added The Movie: kidlatbolt'),
+(348, 48, 'JD', '2025-05-22 00:55:39', 'Admin Updated The Movie: kidlatbolt'),
+(349, 48, 'JD', '2025-05-22 00:57:02', 'Admin Updated The Movie: kidlatbolt'),
+(350, 48, 'jd', '2025-05-22 00:59:16', 'Logged as Admin'),
+(351, 48, 'JD', '2025-05-22 01:00:50', 'Admin Added The Movie: topguns'),
+(352, 48, 'jd', '2025-05-22 01:03:44', 'Logged as Admin'),
+(353, 48, 'JD', '2025-05-22 01:07:21', 'Admin Updated The Movie: hehe'),
+(354, 48, 'JD', '2025-05-22 01:09:26', 'Admin Updated The Movie: kidlatbolt'),
+(355, 48, 'JD', '2025-05-22 01:11:23', 'Admin Updated The Movie: topguns');
 
 -- --------------------------------------------------------
 
@@ -297,10 +311,12 @@ INSERT INTO `tbl_products` (`p_id`, `p_name`, `p_price`, `p_quantity`, `p_status
 (2, 'qweqwe', 1232.00, 0, 'Deleted', 'src/userimages/1.jpg'),
 (3, 'www', 122.00, 0, 'Deleted', ''),
 (4, 'nemo', 123.00, 0, 'Deleted', ''),
-(5, 'hehe', 1200.00, 0, 'Available', ''),
+(5, 'hehe', 500.00, 0, 'Available', 'src/userimages/moana.jfif'),
 (6, 'huhu', 200.00, 0, 'Deleted', ''),
 (7, 'qweew', 111.00, 0, 'Deleted', ''),
-(8, 'shesh', 123213.00, 0, 'Deleted', '');
+(8, 'shesh', 123213.00, 0, 'Deleted', ''),
+(9, 'kidlatbolt', 450.00, 0, 'Available', 'src/userimages/finalboltz.jfif'),
+(10, 'topguns', 500.00, 0, 'Available', 'src/userimages/guntops.jpg');
 
 --
 -- Indexes for dumped tables
@@ -347,7 +363,7 @@ ALTER TABLE `tbl_accounts`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=342;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=356;
 
 --
 -- AUTO_INCREMENT for table `tbl_orders`
@@ -359,7 +375,7 @@ ALTER TABLE `tbl_orders`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `p_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `p_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
