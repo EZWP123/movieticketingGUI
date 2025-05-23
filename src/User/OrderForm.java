@@ -721,13 +721,19 @@ if (rs2.next()) {
     String productId = PID.getText().trim();
     String quantityStr = Qnty.getText().trim();
     String paymentStr = Payment.getText().trim();
-
+    
+int d_qnty = 0;
+            int sold_qnty = 0;
+            int minusQnty = 0;
+            int plusQnty = 0;
     // Variables to hold parsed integer values and database results
     int quantity = 0;
     int unitPrice = 0; // Price per item
-    int amountPaid = 0; // Amount customer entered
+    int amountPaid = 0;
+    // Amount customer entered
     int userId = sess.getUid();
     String username = null; // For logging purposes
+            int q = Integer.parseInt(Qnty.getText().trim());
 
     // Get current timestamp for the transaction date
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -770,9 +776,39 @@ if (rs2.next()) {
                     JOptionPane.showMessageDialog(null, "Error: Current user not found in database.");
                     return;
                 }
+                
             }
+            
         }
+if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, o_total) " //change to insert orders table
+                            + "VALUES ('" + userId + "', '" + productId + "', '" + q + "', '" + productId + "', 'Succesful', '" + paymentStr + "')")) {
 
+                        
+                        
+                        try {
+                            String query2 = "SELECT * FROM tbl_products WHERE p_id = '" + productId + "'";
+                            System.out.println("pid: "+productId);
+                            PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
+
+                            ResultSet resultSet = pstmt.executeQuery();
+
+                            if (resultSet.next()) 
+                            {
+                                d_qnty = resultSet.getInt("p_quantity");  
+                                minusQnty = d_qnty - q;
+                                
+                                sold_qnty = resultSet.getInt("p_sold");
+                                plusQnty = sold_qnty + q;
+
+                                
+                                dbc.updateData("UPDATE tbl_products SET p_quantity = '" + minusQnty + "', p_sold = '" + plusQnty + "' WHERE p_id = '" + productId + "'");
+                                System.out.println("minusQnty: "+minusQnty+" pid:"+productId);
+                            }
+                        } catch (SQLException ex) {
+                            System.out.println("SQL Exception: " + ex);
+                        }
+                        }
+                        
         // b. Insert order into tbl_orders
         String insertOrderSql = "INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, o_total) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmtInsertOrder = dbc.getConnection().prepareStatement(insertOrderSql)) {

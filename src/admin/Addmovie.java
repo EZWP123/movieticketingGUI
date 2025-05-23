@@ -438,6 +438,8 @@ public class Addmovie extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -473,7 +475,7 @@ public class Addmovie extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(account_table);
 
-        Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 530, 530));
+        Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 500, 510));
 
         jPanel1.setLayout(null);
         jPanel1.add(movieimage);
@@ -527,13 +529,13 @@ public class Addmovie extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Status:");
-        Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 540, 80, 30));
+        Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, 80, 30));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Price:");
-        Main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 80, 30));
+        Main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 470, 80, 30));
 
         Price.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Price.addActionListener(new java.awt.event.ActionListener() {
@@ -541,13 +543,13 @@ public class Addmovie extends javax.swing.JFrame {
                 PriceActionPerformed(evt);
             }
         });
-        Main.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 490, 330, 30));
+        Main.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 470, 330, 30));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Movie Name:");
-        Main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, 110, 30));
+        Main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 110, 30));
 
         Mname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Mname.addActionListener(new java.awt.event.ActionListener() {
@@ -555,7 +557,7 @@ public class Addmovie extends javax.swing.JFrame {
                 MnameActionPerformed(evt);
             }
         });
-        Main.add(Mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 330, 30));
+        Main.add(Mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, 330, 30));
 
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Out of Stock" }));
         status.addActionListener(new java.awt.event.ActionListener() {
@@ -563,7 +565,7 @@ public class Addmovie extends javax.swing.JFrame {
                 statusActionPerformed(evt);
             }
         });
-        Main.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 330, 30));
+        Main.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 520, 330, 30));
 
         PID.setEditable(false);
         PID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -573,13 +575,13 @@ public class Addmovie extends javax.swing.JFrame {
                 PIDActionPerformed(evt);
             }
         });
-        Main.add(PID, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 330, 30));
+        Main.add(PID, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, 330, 30));
 
         jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("MovieID:");
-        Main.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 90, 30));
+        Main.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, 90, 30));
 
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -684,6 +686,11 @@ public class Addmovie extends javax.swing.JFrame {
         logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
 
         Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, -1, 40));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("capacity");
+        Main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 560, 50, 30));
+        Main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, 330, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
         Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 620, 530));
@@ -1170,10 +1177,12 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel logout;
     public javax.swing.JLabel movieimage;
     public javax.swing.JComboBox<String> status;

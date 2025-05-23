@@ -96,6 +96,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -304,6 +305,25 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 500, 160, 70));
 
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
+        Main.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 130, 80));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
         Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 550, 570));
 
@@ -445,6 +465,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         users4.setBackground(d);
     }//GEN-LAST:event_users4MouseExited
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+total_sale ts = new total_sale();
+ts.setVisible(true);
+this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -503,6 +529,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel users;
     private javax.swing.JPanel users1;
