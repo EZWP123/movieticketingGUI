@@ -439,7 +439,7 @@ public class Addmovie extends javax.swing.JFrame {
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        capacity = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -690,7 +690,7 @@ public class Addmovie extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("capacity");
         Main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 560, 50, 30));
-        Main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, 330, 30));
+        Main.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, 330, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
         Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 620, 530));
@@ -734,7 +734,7 @@ public class Addmovie extends javax.swing.JFrame {
         String mn = Mname.getText().trim();
         String pr = Price.getText().trim();
         String st = status.getSelectedItem().toString().trim();
-
+      
         System.out.println("Attempting to add movie:");
         System.out.println("Movie Name: " + mn);
         System.out.println("Price: " + pr);
@@ -834,7 +834,7 @@ public class Addmovie extends javax.swing.JFrame {
                     Price.setText("" + rs.getString("p_price"));
                     status.setSelectedItem("" + rs.getString("p_status"));
                     
-                    
+                   
                     
                       showMovieImage(selectedID); 
                      
@@ -1169,6 +1169,7 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JPanel add2;
     private javax.swing.JPanel add3;
     private javax.swing.JPanel add4;
+    private javax.swing.JTextField capacity;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -1182,7 +1183,6 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel logout;
     public javax.swing.JLabel movieimage;
     public javax.swing.JComboBox<String> status;

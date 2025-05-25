@@ -514,6 +514,8 @@ if (rs2.next()) {
         Qnty = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         Payment = new javax.swing.JTextField();
+        capacity = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -675,6 +677,21 @@ if (rs2.next()) {
         });
         Main.add(Payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 510, 330, 30));
 
+        capacity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        capacity.setEnabled(false);
+        capacity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capacityActionPerformed(evt);
+            }
+        });
+        Main.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 330, 30));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Seats Capacity");
+        Main.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 120, 30));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
         Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 490, 520));
 
@@ -780,34 +797,31 @@ int d_qnty = 0;
             }
             
         }
-if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, o_total) " //change to insert orders table
-                            + "VALUES ('" + userId + "', '" + productId + "', '" + q + "', '" + productId + "', 'Succesful', '" + paymentStr + "')")) {
+if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, o_total) " +
+    "VALUES ('" + userId + "', '" + productId + "', '" + q + "', '" + transactionDate + "', 'Succesful', '" + paymentStr + "')")) {
 
-                        
-                        
-                        try {
-                            String query2 = "SELECT * FROM tbl_products WHERE p_id = '" + productId + "'";
-                            System.out.println("pid: "+productId);
-                            PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
+    try {
+        String query2 = "SELECT * FROM tbl_products WHERE p_id = '" + productId + "'";
+        System.out.println("pid: " + productId);
+        PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
 
-                            ResultSet resultSet = pstmt.executeQuery();
+        ResultSet resultSet = pstmt.executeQuery();
 
-                            if (resultSet.next()) 
-                            {
-                                d_qnty = resultSet.getInt("p_quantity");  
-                                minusQnty = d_qnty - q;
-                                
-                                sold_qnty = resultSet.getInt("p_sold");
-                                plusQnty = sold_qnty + q;
+        if (resultSet.next()) {
+            d_qnty = resultSet.getInt("p_quantity");  
+            minusQnty = d_qnty - q;
+            
+            sold_qnty = resultSet.getInt("p_sold");
+            plusQnty = sold_qnty + q;
 
-                                
-                                dbc.updateData("UPDATE tbl_products SET p_quantity = '" + minusQnty + "', p_sold = '" + plusQnty + "' WHERE p_id = '" + productId + "'");
-                                System.out.println("minusQnty: "+minusQnty+" pid:"+productId);
-                            }
-                        } catch (SQLException ex) {
-                            System.out.println("SQL Exception: " + ex);
-                        }
-                        }
+            dbc.updateData("UPDATE tbl_products SET p_quantity = '" + minusQnty + "', p_sold = '" + plusQnty + "' WHERE p_id = '" + productId + "'");
+            System.out.println("minusQnty: " + minusQnty + " pid:" + productId);
+        }
+    } catch (SQLException ex) {
+        System.out.println("SQL Exception: " + ex);
+    }
+}
+
                         
         // b. Insert order into tbl_orders
         String insertOrderSql = "INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, o_total) VALUES (?, ?, ?, ?, ?, ?)";
@@ -917,6 +931,10 @@ if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, 
     }//GEN-LAST:event_PIDActionPerformed
 
     private void account_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_account_tableMouseClicked
+
+
+
+
         int rowIndex = account_table.getSelectedRow();
         System.out.println("[DEBUG] Selected rowIndex: " + rowIndex);
 
@@ -990,6 +1008,10 @@ if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, 
         // TODO add your handling code here:
     }//GEN-LAST:event_conMouseClicked
 
+    private void capacityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capacityActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1042,10 +1064,12 @@ if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, 
     public javax.swing.JTextField Qnty;
     private javax.swing.JTable account_table;
     private javax.swing.JPanel add;
+    public javax.swing.JTextField capacity;
     private javax.swing.JLabel con;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
