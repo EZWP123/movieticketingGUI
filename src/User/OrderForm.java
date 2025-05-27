@@ -1015,6 +1015,7 @@ if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, 
                 if (rs.next()) {
                     PID.setText(rs.getString("p_id"));
                     Mname.setText(rs.getString("p_name"));
+                    capacity.setText(rs.getString("p_capacity"));
                       showMovieImage(selectedID); 
 //                    addClickable = false;
 //                    ad.setForeground(red);
