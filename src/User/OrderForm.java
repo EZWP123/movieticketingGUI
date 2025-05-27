@@ -20,6 +20,7 @@ import net.proteanit.sql.DbUtils;
 import Startups.LoginForm;
 import static admin.AddUser_Admin.phone;
 import static admin.AddUser_Admin.usname;
+import static admin.Addmovie.getHeightFromWidth;
 import config.Session;
 import static java.awt.Color.black;
 import static java.awt.Color.red;
@@ -284,7 +285,7 @@ Qnty.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() 
                 String pp = rs.getString("p_price");
                 String status = rs.getString("p_status");
                 String qnty = rs.getString("p_quantity");
-                
+                String ptime = rs.getString("p_showtime");
 
                 // Check if the user status is not "Deleted"
                 if (!status.equals("Deleted")) {
@@ -295,7 +296,8 @@ Qnty.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() 
                         pn,
                         pp, 
                         status,
-                        qnty
+                        qnty,
+                        ptime
                     });
                     /*System.out.println("\n==========");
                     System.out.println(""+u);
@@ -311,7 +313,7 @@ Qnty.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() 
             // After processing all rows, update the table on the Swing event dispatch thread
             SwingUtilities.invokeLater(() -> {
                 DefaultTableModel model = new DefaultTableModel(
-                        new String[]{"ID", "Movie Name", "Price", "Status"}, 0
+                        new String[]{"ID", "Movie Name", "Price", "Status", "Stock", "ShowingS"}, 0
                 );
                 for (Object[] row : rowData) {
                     model.addRow(row);
@@ -379,6 +381,59 @@ Qnty.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() 
     }
 
     
+    
+
+    public void showMovieImage(String movieID) {
+        dbConnect dbc = new dbConnect();
+        java.sql.Connection con = dbc.getConnection(); // Get the connection
+        java.sql.PreparedStatement pstmt = null;
+        java.sql.ResultSet rs = null;
+        try {
+            String query = "SELECT p_image FROM tbl_products WHERE p_id = ?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, movieID);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                String imageName = rs.getString("p_image");
+                System.out.println("Retrieved imageName from DB: " + imageName);
+
+                if (imageName != null && !imageName.isEmpty()) {
+                   String fullImagePath = imageName; // Use the image name directly as it already has the full path
+                    System.out.println("Constructed fullImagePath: " + fullImagePath);
+
+                    File imageFile = new File(fullImagePath);
+                    if (!imageFile.exists()) {
+                        System.out.println("Image file NOT found at: " + fullImagePath);
+                    }
+
+                    ImageIcon icon = ResizeImage(fullImagePath, null, movieimage);
+                    movieimage.setIcon(icon);
+                } else {
+                    movieimage.setIcon(null); // No image to show
+                    System.out.println("ImageName is null or empty in the database.");
+                }
+            } else {
+                System.out.println("No product found with ID: " + movieID);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error fetching image: " + ex.getMessage());
+        } finally {
+            // Close resources in the finally block
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (con != null) con.close(); // Close the connection
+            } catch (SQLException e) {
+                System.out.println("Error closing resources: " + e.getMessage());
+            }
+        }
+    }
+   
+
+    
+
+   
+
     
     
     
@@ -516,6 +571,8 @@ if (rs2.next()) {
         Payment = new javax.swing.JTextField();
         capacity = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        movieimage = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -551,13 +608,13 @@ if (rs2.next()) {
         });
         jScrollPane1.setViewportView(account_table);
 
-        Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 610, 500));
+        Main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 1100, 150));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Price to Pay:");
-        Main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, 100, 30));
+        Main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 90, 20));
 
         Price.setEditable(false);
         Price.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -566,13 +623,13 @@ if (rs2.next()) {
                 PriceActionPerformed(evt);
             }
         });
-        Main.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 330, 30));
+        Main.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 490, 320, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Movie Name:");
-        Main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 110, 30));
+        Main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 100, 20));
 
         Mname.setEditable(false);
         Mname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -581,7 +638,7 @@ if (rs2.next()) {
                 MnameActionPerformed(evt);
             }
         });
-        Main.add(Mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, 330, 30));
+        Main.add(Mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 320, -1));
 
         PID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PID.setEnabled(false);
@@ -590,13 +647,13 @@ if (rs2.next()) {
                 PIDActionPerformed(evt);
             }
         });
-        Main.add(PID, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, 330, 30));
+        Main.add(PID, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 320, -1));
 
         jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("MovieID");
-        Main.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 90, 30));
+        Main.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 80, 20));
 
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -648,7 +705,7 @@ if (rs2.next()) {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Quanity:");
-        Main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 80, 30));
+        Main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, 70, 20));
 
         Qnty.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Qnty.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -661,13 +718,13 @@ if (rs2.next()) {
                 QntyActionPerformed(evt);
             }
         });
-        Main.add(Qnty, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, 330, 30));
+        Main.add(Qnty, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 320, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Enter Payment:");
-        Main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 510, 120, 30));
+        Main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 540, 110, 20));
 
         Payment.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Payment.addActionListener(new java.awt.event.ActionListener() {
@@ -675,7 +732,7 @@ if (rs2.next()) {
                 PaymentActionPerformed(evt);
             }
         });
-        Main.add(Payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 510, 330, 30));
+        Main.add(Payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 540, 320, -1));
 
         capacity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         capacity.setEnabled(false);
@@ -684,16 +741,22 @@ if (rs2.next()) {
                 capacityActionPerformed(evt);
             }
         });
-        Main.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 330, 30));
+        Main.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 320, -1));
 
         jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Seats Capacity");
-        Main.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 120, 30));
+        Main.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 110, 20));
+
+        jPanel1.setLayout(null);
+        jPanel1.add(movieimage);
+        movieimage.setBounds(10, 10, 190, 170);
+
+        Main.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 210, 190));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
-        Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 490, 520));
+        Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 490, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -945,14 +1008,14 @@ if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, 
             try {
                 dbConnect dbc = new dbConnect();
                 TableModel tbl = account_table.getModel();
-                Object selectedID = tbl.getValueAt(rowIndex, 0);
+               String selectedID = tbl.getValueAt(rowIndex, 0).toString(); // Get the movie ID
                 System.out.println("[DEBUG] Selected Product ID: " + selectedID);
 
                 ResultSet rs = dbc.getData("SELECT * FROM tbl_products WHERE p_id = '" + selectedID + "'");
                 if (rs.next()) {
                     PID.setText(rs.getString("p_id"));
                     Mname.setText(rs.getString("p_name"));
-
+                      showMovieImage(selectedID); 
 //                    addClickable = false;
 //                    ad.setForeground(red);
 
@@ -1075,7 +1138,9 @@ if (dbc.insertData("INSERT INTO tbl_orders (u_id, p_id, quantity, date, status, 
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logout;
+    public javax.swing.JLabel movieimage;
     // End of variables declaration//GEN-END:variables
 }

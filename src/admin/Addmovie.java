@@ -438,8 +438,6 @@ public class Addmovie extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        capacity = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -686,11 +684,6 @@ public class Addmovie extends javax.swing.JFrame {
         logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 130, -1));
 
         Main.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, -1, 40));
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("capacity");
-        Main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 560, 50, 30));
-        Main.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, 330, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/3271640.jpg"))); // NOI18N
         Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 620, 530));
@@ -1169,7 +1162,6 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JPanel add2;
     private javax.swing.JPanel add3;
     private javax.swing.JPanel add4;
-    private javax.swing.JTextField capacity;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -1178,7 +1170,6 @@ public class Addmovie extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
